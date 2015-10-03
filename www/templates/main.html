@@ -1,0 +1,36 @@
+<ion-view view-title="The Best">
+  <ion-content class="badge">
+
+    <form name="vm.search" ng-submit="vm.submit()">
+      <div class="row responsive-sm">
+        <div class="col">
+          <h3>{{vm.title}}</h3>
+        </div>
+      </div>
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input ng-focus="vm.writing = true"
+                 ng-blur="vm.writing = false"
+                 type="search"
+                 placeholder="Search"
+                 ng-model="vm.searchText"
+                 ng-change="vm.onChange()"
+                 required>
+        </label>
+        <button type="submit"
+                class="button icon-left ion-search button-small button-positive"
+                ng-disabled="vm.search.$invalid">Go!</button>
+      </div>
+
+      <div class="list" ng-if="vm.search.$valid && vm.writing && vm.items.length > 0 && vm.searchText.length > 2">
+        <div class="item item-button-right" ng-repeat="item in vm.items | filter: vm.searchText" ng-click="vm.selectedItem(item)">
+          {{item.text}}
+          <button class="button button-clear">
+            <i class="icon ion-arrow-graph-up-left"></i>
+          </button>
+        </div>
+      </div>
+
+  </ion-content>
+</ion-view>

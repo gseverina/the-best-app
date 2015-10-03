@@ -1,0 +1,16 @@
+<ion-view view-title="The Best">
+  <ion-content class="badge">
+    <input type="search"
+           placeholder="Search"
+           ng-model="vm.searchText"
+           ng-change="vm.onChange()"
+           required>
+
+    <ion-list>
+      <ion-item ng-repeat="item in vm.suggestions.suggestions">
+        {{item.text}}
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
