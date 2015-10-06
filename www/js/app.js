@@ -3,7 +3,9 @@
 angular
   .module('TheBest', [
     'ionic',
-    'controllers'
+    'AppCtrl',
+    'MainCtrl',
+    'QSuggestionsCtrl'
   ])
 
   .run(function($ionicPlatform) {
