@@ -2,17 +2,17 @@
   'use strict';
 
   angular
-    .module('QSuggestionsCtrl', ['QSuggestionsSvc'])
+    .module('QSuggestionsCtrl', ['TheBestSvc'])
     .controller('QSuggestionsCtrl', QSuggestionsCtrl);
 
-  function QSuggestionsCtrl (QSuggestionsSvc) {
+  function QSuggestionsCtrl (TheBestSvc) {
 
     var vm = this;
     vm.searchText = "";
     vm.suggestions = [];
 
     vm.onChange = function() {
-      QSuggestionsSvc.get(vm.searchText).then(success, fail);
+      TheBestSvc.get(vm.searchText).then(success, fail);
     };
 
     activate();
@@ -20,7 +20,7 @@
     ///
 
     function activate() {
-      QSuggestionsSvc.getAll('c').then(success, fail);
+      TheBestSvc.getAll('c').then(success, fail);
     }
 
     function success(res) {

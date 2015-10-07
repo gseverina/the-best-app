@@ -23,7 +23,7 @@
                 ng-disabled="vm.search.$invalid">Go!</button>
       </div>
 
-      <div class="list" ng-if="vm.search.$valid && vm.writing && vm.items.length > 0 && vm.searchText.length > 2">
+      <div class="list"> <!--ng-if="vm.search.$valid && vm.writing && vm.items.length > 0 && vm.searchText.length > 2"-->
         <div class="item item-button-right" ng-repeat="item in vm.items | filter: vm.searchText" ng-click="vm.selectedItem(item)">
           {{item.text}}
           <button class="button button-clear">
