@@ -11,7 +11,8 @@
     return {
       getAll: getAll,
       get: get,
-      getAnswer: getAnswer
+      getAnswer: getAnswer,
+      getQuestion: getQuestion
     };
 
     ////
@@ -26,8 +27,14 @@
       return $http.get(url);
     }
 
+    function getQuestion(usrQuestion) {
+      //todo: avoid asking the user the same question the user is asking...
+      var url = api + '/api/user_question';
+      return $http.get(url);
+    }
+
     function getAnswer(question) {
-      var url = api + ' /api/best_answer?q=' + question;
+      var url = api + '/api/best_answer?q=' + question;
       return $http.get(url);
     }
   }

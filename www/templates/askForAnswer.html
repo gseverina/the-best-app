@@ -1,0 +1,28 @@
+<ion-view view-title="The Best">
+  <ion-content class="badge">
+
+    <div class="card">
+      <div class="item item-text-wrap">
+        {{vm.title}}
+      </div>
+    </div>
+
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input ng-focus="vm.writing = true"
+               ng-blur="vm.writing = false"
+               type="search"
+               placeholder="Search"
+               ng-model="vm.searchText"
+               ng-change="vm.onChange()"
+               required>
+      </label>
+      <button type="submit"
+              class="button icon-left ion-search button-small button-positive"
+              ng-disabled="vm.search.$invalid">Go!</button>
+    </div>
+
+
+  </ion-content>
+</ion-view>

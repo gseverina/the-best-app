@@ -5,6 +5,7 @@ angular
     'ionic',
     'AppCtrl',
     'MainCtrl',
+    'AskForAnswerCtrl',
     'QSuggestionsCtrl'
   ])
 
@@ -39,7 +40,29 @@ angular
       }
     })
 
-    .state('app.result', {
+      /*
+    .state('app.showBestAnswer', {
+      url: '/showBestAnswer',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/showBestAnswer.html',
+          controller: 'showBestAnswerCtrl as vm'
+        }
+      }
+    })
+    */
+
+    .state('app.askForAnswer', {
+      url: '/askForAnswer',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/askForAnswer.html',
+          controller: 'AskForAnswerCtrl as vm'
+        }
+      }
+    })
+
+      .state('app.result', {
       url: '/result',
       views: {
         'menuContent': {
