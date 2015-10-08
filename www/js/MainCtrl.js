@@ -7,24 +7,24 @@
 
   function MainCtrl($state, TheBestSvc, UserDataSvc) {
     var vm = this;
-    vm.title = "What is the best:";
+    vm.title = "The best:";
     vm.name = "Actor";
     vm.items = [];
     vm.searchText = "";
     vm.writing = false;
 
     vm.onChange = function() {
-      TheBestSvc.get(vm.searchText).then(success, fail);
+      TheBestSvc.getSuggestionForQuestion(vm.searchText).then(success, fail);
     };
 
     vm.selectedItem = function(item) {
-      vm.searchText = item.name;
+      vm.searchText = item.text;
       vm.search.$valid = true;
       vm.submit();
     };
 
     vm.submit = function() {
-      TheBestSvc.getAnswer(vm.searchText)
+      TheBestSvc.getBestAnswer(vm.searchText)
         .then(getAnswerSuccess, getAnswerFail);
     };
 

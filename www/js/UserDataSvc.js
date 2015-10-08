@@ -20,6 +20,7 @@
     }
 
     function get(id) {
+      console.log("----> get: ", id, params);
       return params[id];
     }
   }

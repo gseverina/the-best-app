@@ -9,21 +9,21 @@
     var api = 'http://52.88.14.176:10001';
 
     return {
-      getAll: getAll,
-      get: get,
-      getAnswer: getAnswer,
+      getSuggestionForQuestion: getSuggestionForQuestion,
+      getSuggestionForAnswer: getSuggestionForAnswer,
+      getBestAnswer: getBestAnswer,
       getQuestion: getQuestion
     };
 
     ////
 
-    function getAll() {
-      var url = api + '/api/suggestions/question?text=';
+    function getSuggestionForQuestion(text) {
+      var url = api + '/api/suggestions/question?text=' + text;
       return $http.get(url);
     }
 
-    function get(text) {
-      var url = api + '/api/suggestions/question?text=' + text;
+    function getSuggestionForAnswer(question, text) {
+      var url = api + '/api/suggestions/answer?q=' + question + '&text=' + text;
       return $http.get(url);
     }
 
@@ -33,7 +33,7 @@
       return $http.get(url);
     }
 
-    function getAnswer(question) {
+    function getBestAnswer(question) {
       var url = api + '/api/best_answer?q=' + question;
       return $http.get(url);
     }

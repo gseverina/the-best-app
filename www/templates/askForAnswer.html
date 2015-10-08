@@ -1,28 +1,76 @@
 <ion-view view-title="The Best">
   <ion-content class="badge">
+    <form name="vm.search" ng-submit="vm.submit()">
 
-    <div class="card">
-      <div class="item item-text-wrap">
-        {{vm.title}}
+      <div class="row-wrap">
+        <div class="item item-text-wrap">
+          <h2>{{vm.title}}</h2>
+          <hr>
+          <h2>{{vm.question}}</h2>
+        </div>
       </div>
-    </div>
 
-    <div class="item item-input-inset">
-      <label class="item-input-wrapper">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input ng-focus="vm.writing = true"
-               ng-blur="vm.writing = false"
-               type="search"
-               placeholder="Search"
-               ng-model="vm.searchText"
-               ng-change="vm.onChange()"
-               required>
-      </label>
-      <button type="submit"
-              class="button icon-left ion-search button-small button-positive"
-              ng-disabled="vm.search.$invalid">Go!</button>
-    </div>
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input ng-focus="vm.writing = true"
+                 ng-blur="vm.writing = false"
+                 type="search"
+                 placeholder="Answer"
+                 ng-model="vm.searchText"
+                 ng-change="vm.onChange()"
+                 required>
+        </label>
+        <button type="submit"
+                class="button icon-left ion-search button-small button-positive"
+                ng-disabled="vm.search.$invalid">Go!</button>
+      </div>
+
+      <div class="list">
+        <div class="item item-button-right" ng-repeat="item in vm.items" ng-click="vm.selectedItem(item)">
+          {{item.text}}
+          <button class="button button-clear">
+            <i class="icon ion-arrow-graph-up-left"></i>
+          </button>
+        </div>
+      </div>
 
 
+      <!--div class="card">
+        <div class="item item-divider">
+          {{vm.title}}
+          <br />
+        </div>
+        <div class="item item-text-wrap">
+          <p>{{vm.question}}</p>
+          <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input ng-focus="vm.writing = true"
+                     ng-blur="vm.writing = false"
+                     type="search"
+                     placeholder="Answer"
+                     ng-model="vm.searchText"
+                     ng-change="vm.onChange()"
+                     required>
+            </label>
+            <button type="submit"
+                    class="button icon-left ion-search button-small button-positive"
+                    ng-disabled="vm.search.$invalid">Go!</button>
+          </div>
+
+          <div class="list">
+            <div class="item item-button-right" ng-repeat="item in vm.items" ng-click="vm.selectedItem(item)">
+              {{item.text}}
+              <button class="button button-clear">
+                <i class="icon ion-arrow-graph-up-left"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div-->
+
+    </form>
   </ion-content>
 </ion-view>

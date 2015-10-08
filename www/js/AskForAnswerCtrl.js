@@ -8,6 +8,17 @@
   function AskForAnswerCtrl($state, TheBestSvc, UserDataSvc) {
 
     var vm = this;
+    vm.question = "";
+
+    vm.onChange = function() {
+      TheBestSvc.getSuggestionForAnswer(vm.searchText).then(success, fail);
+    };
+
+    vm.selectedItem = function(item) {
+      vm.searchText = item.text;
+      //vm.search.$valid = true;
+      //vm.submit();
+    };
 
     activate();
 
@@ -15,20 +26,30 @@
 
     function activate($state) {
       var question = UserDataSvc.get("app.askForAnswer:question");
-      vm.title = "Answer this while we get you to the best " + question;
+      vm.title = "Please answer this while we get you to the best " + question;
 
       TheBestSvc.getQuestion(question)
         .then(getQuestionSuccess, getQuestionFail);
     }
 
     function getQuestionSuccess(res) {
-      console.log("success", res);
-      console.log("item: ",res.data.item);
+      vm.question = res.data.item;
     }
 
     function getQuestionFail() {
       console.log("fail", res);
     }
+
+    function success(res) {
+      console.log("success", res);
+      vm.items = res.data.suggestions;
+    }
+
+    function fail() {
+      console.log("fail");
+      vm.suggestions = {"suggestions": [{"text": "ERROR"}]};
+    }
+
 
   }
 
