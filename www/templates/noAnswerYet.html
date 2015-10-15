@@ -1,0 +1,22 @@
+<ion-view view-title="The Best">
+  <ion-content class="badge">
+    <div class="row-wrap">
+      <div class="item item-text-wrap">
+        <h2>{{vm.title1}}</h2>
+        <hr>
+        <h2>{{vm.title2}}</h2>
+        <br>
+        <h4><input type="checkbox">keep me posted</h4>
+        <hr>
+        <h2>{{vm.title3}}</h2>
+        <br>
+        <button ng-click="vm.askYourFriends()" class="button button-small button-stable icon-left ion-share">
+          Ask your friends
+        </button>
+        <button ng-click="vm.askAgain()" class="button button-small button-stable icon-left ion-search">
+          Ask again
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

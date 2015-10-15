@@ -42,10 +42,9 @@
 
     function getAnswerSuccess(res) {
       console.log("getAnswerSuccess", res);
-      if(res.data.item) {
-        //$state.go('app.showBestAnswer');
-        UserDataSvc.put("app.askForAnswer:question", vm.searchText);
-        $state.go('app.askForAnswer');
+      if(res.data.items.length == 0) {
+        UserDataSvc.put("app.noAnswerYet:newQuestion", vm.searchText);
+        $state.go('app.noAnswerYet');
       } else {
         UserDataSvc.put("app.askForAnswer:question", vm.searchText);
         $state.go('app.askForAnswer');

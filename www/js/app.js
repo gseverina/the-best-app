@@ -6,6 +6,7 @@ angular
     'AppCtrl',
     'MainCtrl',
     'AskForAnswerCtrl',
+    'NoAnswerYetCtrl',
     'QSuggestionsCtrl'
   ])
 
@@ -40,24 +41,22 @@ angular
       }
     })
 
-      /*
-    .state('app.showBestAnswer', {
-      url: '/showBestAnswer',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/showBestAnswer.html',
-          controller: 'showBestAnswerCtrl as vm'
-        }
-      }
-    })
-    */
-
     .state('app.askForAnswer', {
       url: '/askForAnswer',
       views: {
         'menuContent': {
           templateUrl: 'templates/askForAnswer.html',
           controller: 'AskForAnswerCtrl as vm'
+        }
+      }
+    })
+
+    .state('app.noAnswerYet', {
+      url: '/noAnswerYet',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/noAnswerYet.html',
+          controller: 'NoAnswerYetCtrl as vm'
         }
       }
     })
