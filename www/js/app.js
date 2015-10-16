@@ -3,6 +3,7 @@
 angular
   .module('TheBest', [
     'ionic',
+    'ngCordova',
     'AppCtrl',
     'MainCtrl',
     'AskForAnswerCtrl',

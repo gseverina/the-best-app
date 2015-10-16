@@ -40,9 +40,16 @@
       return $http.get(url);
     }
 
-    function postItem(text) {
+    function postItem(q, a) {
       var url = api + 'items';
-      var data = '{"item": {"q": "' + text  + '"}}';
+      var data = "";
+
+      if(a) {
+        a = '"' + a + '"';
+      }
+
+      data = '{"item": {"q": "' + q + '", "a": ' + a + '}}';
+
       return $http.post(url, data);
     }
   }

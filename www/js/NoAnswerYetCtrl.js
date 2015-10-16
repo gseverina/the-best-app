@@ -5,13 +5,13 @@
     .module('NoAnswerYetCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('NoAnswerYetCtrl', NoAnswerYetCtrl);
 
-  function NoAnswerYetCtrl ($state, TheBestSvc, UserDataSvc) {
+  function NoAnswerYetCtrl ($state, TheBestSvc, UserDataSvc, $cordovaSocialSharing) {
 
     var vm = this;
     vm.newQuestion = "";
 
     vm.askYourFriends = function() {
-
+      $cordovaSocialSharing.share('What is the best ' + vm.newQuestion + '?', 'The Best', null, 'http://www.thebest.com');
     };
 
     vm.askAgain = function() {
@@ -19,7 +19,7 @@
     };
 
     vm.postNewQuestion = function() {
-      TheBestSvc.postItem(vm.newQuestion)
+      TheBestSvc.postItem(vm.newQuestion, null)
         .then(postItemSuccess, postItemFail);
     };
 
