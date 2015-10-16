@@ -39,17 +39,17 @@
       vm.user_question = "What is the best " + res.data.items[0].q + " ?";
     }
 
-    function getQuestionFail() {
-      console.log("fail", res);
+    function getQuestionFail(res) {
+      console.log("Get Question Fail:", res);
     }
 
     function success(res) {
-      console.log("success", res);
+      console.log("success:", res);
       vm.items = res.data.suggestions;
     }
 
-    function fail() {
-      console.log("fail");
+    function fail(res) {
+      console.log("Get Suggestion Fail:", res);
       //vm.suggestions = {"suggestions": [{"text": "ERROR"}]};
     }
 

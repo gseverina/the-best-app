@@ -12,7 +12,8 @@
       getSuggestionForQuestion: getSuggestionForQuestion,
       getSuggestionForAnswer: getSuggestionForAnswer,
       getBestAnswer: getBestAnswer,
-      getQuestion: getQuestion
+      getQuestion: getQuestion,
+      postItem: postItem
     };
 
     ////
@@ -37,6 +38,12 @@
     function getBestAnswer(question) {
       var url = api + 'best_answer?q=' + question;
       return $http.get(url);
+    }
+
+    function postItem(text) {
+      var url = api + 'items';
+      var data = '{"item": {"q": "' + text  + '"}}';
+      return $http.post(url, data);
     }
   }
 }());

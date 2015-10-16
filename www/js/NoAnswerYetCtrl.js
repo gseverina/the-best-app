@@ -18,6 +18,11 @@
       $state.go('app.main');
     };
 
+    vm.postNewQuestion = function() {
+      TheBestSvc.postItem(vm.newQuestion)
+        .then(postItemSuccess, postItemFail);
+    };
+
     activate();
 
     ///
@@ -27,6 +32,15 @@
       vm.title1 = "Good one! you are the first to ask for the best " + vm.newQuestion;
       vm.title2 = "We'll let you know when we have an answer.";
       vm.title3 = "Ask your friends to get the answer quicker!";
+      vm.postNewQuestion();
+    }
+
+    function postItemSuccess(res) {
+      console.log("Post Item Success:", res);
+    }
+
+    function postItemFail(res) {
+      console.log("Post Item Fail:", res);
     }
 
   }
