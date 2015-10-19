@@ -7,7 +7,6 @@
 
   function MainCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
     var vm = this;
-    vm.title = "The best:";
     vm.name = "Actor";
     vm.items = [];
     vm.searchText = "";

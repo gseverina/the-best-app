@@ -4,6 +4,8 @@ angular
   .module('TheBest', [
     'ionic',
     'ngCordova',
+    'pascalprecht.translate',
+    'Translations',
     'AppCtrl',
     'MainCtrl',
     'AskForAnswerCtrl',
@@ -22,7 +24,7 @@ angular
     });
   })
 
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $translateProvider, Translations) {
     $stateProvider
 
     .state('app', {
@@ -74,6 +76,13 @@ angular
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/main');
+
+    //angular-translate configurations
+    $translateProvider
+      .translations('en', Translations.translationsEN)
+      .translations('es', Translations.translationsES)
+      .useSanitizeValueStrategy('sanitize')
+      .preferredLanguage('en');
   });
 
 
