@@ -5,7 +5,7 @@
     .module('MainCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('MainCtrl', MainCtrl);
 
-  function MainCtrl($state, TheBestSvc, UserDataSvc) {
+  function MainCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
     var vm = this;
     vm.title = "The best:";
     vm.name = "Actor";
@@ -14,7 +14,8 @@
     vm.writing = false;
 
     vm.onChange = function() {
-      TheBestSvc.getSuggestionForQuestion(vm.searchText).then(success, fail);
+      TheBestSvc.getSuggestionForQuestion(vm.searchText)
+        .then(getSuggestionForQuestionSuccess, getSuggestionForQuestionFail);
     };
 
     vm.selectedItem = function(item) {
@@ -24,25 +25,40 @@
     };
 
     vm.submit = function() {
+      vm.show('looking for the best...');
       TheBestSvc.getBestAnswer(vm.searchText)
-        .then(getAnswerSuccess, getAnswerFail);
+        .then(getBestAnswerSuccess, getBestAnswerFail)
+        .finally(function(){
+          vm.hide();
+        });
     };
+
+    vm.show = function($template) {
+      $ionicLoading.show({
+        template: $template
+      });
+    };
+
+    vm.hide = function(){
+      $ionicLoading.hide();
+    };
+
 
     /////
 
-    function success(res) {
-      console.log("success", res);
+    function getSuggestionForQuestionSuccess(res) {
+      console.log("getSuggestionForQuestionSuccess: ", res);
       vm.items = res.data.suggestions;
     }
 
-    function fail() {
-      console.log("fail");
+    function getSuggestionForQuestionFail(res) {
+      console.log("getSuggestionForQuestion Fail:", res);
       vm.suggestions = {"suggestions": [{"text": "ERROR"}]};
     }
 
-    function getAnswerSuccess(res) {
-      console.log("getAnswerSuccess", res);
-      if(res.data.items.length == 0) {
+    function getBestAnswerSuccess(res) {
+      console.log("getBestAnswerSuccess: ", res);
+      if(res.data.length == 0) {
         UserDataSvc.put("app.noAnswerYet:newQuestion", vm.searchText);
         $state.go('app.noAnswerYet');
       } else {
@@ -51,8 +67,8 @@
       }
     }
 
-    function getAnswerFail(res) {
-      console.log("getAnswerFail", res);
+    function getBestAnswerFail(res) {
+      console.log("getBestAnswerFail: ", res);
     }
 
   }

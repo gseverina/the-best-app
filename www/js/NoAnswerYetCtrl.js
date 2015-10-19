@@ -19,8 +19,8 @@
     };
 
     vm.postNewQuestion = function() {
-      TheBestSvc.postItem(vm.newQuestion, null)
-        .then(postItemSuccess, postItemFail);
+      TheBestSvc.postNewQuestion(vm.newQuestion)
+        .then(postNewQuestionSuccess, postNewQuestionFail);
     };
 
     activate();
@@ -35,12 +35,12 @@
       vm.postNewQuestion();
     }
 
-    function postItemSuccess(res) {
-      console.log("Post Item Success:", res);
+    function postNewQuestionSuccess(res) {
+      console.log("postNewQuestionSuccess:", res);
     }
 
-    function postItemFail(res) {
-      console.log("Post Item Fail:", res);
+    function postNewQuestionFail(res) {
+      console.log("postNewQuestionFail:", res);
     }
 
   }

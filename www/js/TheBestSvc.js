@@ -12,8 +12,10 @@
       getSuggestionForQuestion: getSuggestionForQuestion,
       getSuggestionForAnswer: getSuggestionForAnswer,
       getBestAnswer: getBestAnswer,
-      getQuestion: getQuestion,
-      postItem: postItem
+      postNewQuestion: postNewQuestion,
+      getSystemQuestion: getSystemQuestion,
+      postUserAnswer: postUserAnswer,
+      vote: vote
     };
 
     ////
@@ -29,28 +31,37 @@
       return $http.get(url);
     }
 
-    function getQuestion(usrQuestion) {
-      //todo: avoid asking the user the same question the user is asking...
-      var url = api + 'user_question';
-      return $http.get(url);
-    }
-
     function getBestAnswer(question) {
       var url = api + 'best_answer?q=' + question;
       return $http.get(url);
     }
 
-    function postItem(q, a) {
-      var url = api + 'items';
-      var data = "";
-
-      if(a) {
-        a = '"' + a + '"';
-      }
-
-      data = '{"item": {"q": "' + q + '", "a": ' + a + '}}';
+    function postNewQuestion(newQuestion) {
+      var url = api + 'question';
+      var data = '{"q": "' + newQuestion + '"}';
 
       return $http.post(url, data);
     }
+
+    function getSystemQuestion() {
+      var url = api + 'system_question';
+      return $http.get(url);
+
+    }
+
+    function postUserAnswer(q, a) {
+      var url = api + 'user_answer';
+      var data = '{"q": "' + q + '", "a": ' + a + '}';
+
+      return $http.post(url, data);
+    }
+
+    function vote(q, a) {
+      var url = api + 'vote';
+      var data = '{"q": "' + q + '", "a": ' + a + '}';
+
+      return $http.post(url, data);
+    }
+
   }
 }());

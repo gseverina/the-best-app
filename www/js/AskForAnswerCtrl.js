@@ -5,19 +5,18 @@
     .module('AskForAnswerCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('AskForAnswerCtrl', AskForAnswerCtrl);
 
-  function AskForAnswerCtrl($state, TheBestSvc, UserDataSvc) {
+  function AskForAnswerCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
 
     var vm = this;
     vm.question = "";
 
     vm.onChange = function() {
-      TheBestSvc.getSuggestionForAnswer(vm.question, vm.searchText).then(success, fail);
+      TheBestSvc.getSuggestionForAnswer(vm.question, vm.searchText)
+        .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail);
     };
 
     vm.selectedItem = function(item) {
       vm.searchText = item.text;
-      //vm.search.$valid = true;
-      //vm.submit();
     };
 
     activate();
@@ -31,28 +30,25 @@
       }
       vm.title = "Please answer this while we get you to the best " + vm.question;
 
-      TheBestSvc.getQuestion(vm.question)
-        .then(getQuestionSuccess, getQuestionFail);
+      TheBestSvc.getSystemQuestion()
+        .then(getSystemQuestionSuccess, getSystemQuestionFail);
     }
 
-    function getQuestionSuccess(res) {
-      vm.user_question = "What is the best " + res.data.items[0].q + " ?";
+    function getSystemQuestionSuccess(res) {
+      vm.system_question = "What is the best " + res.data.items[0].q + " ?";
     }
 
-    function getQuestionFail(res) {
-      console.log("Get Question Fail:", res);
+    function getSystemQuestionFail(res) {
+      console.log("Get System Question Fail:", res);
     }
 
-    function success(res) {
-      console.log("success:", res);
+    function getSuggestionForAnswerSuccess(res) {
       vm.items = res.data.suggestions;
     }
 
-    function fail(res) {
+    function getSuggestionForAnswerFail(res) {
       console.log("Get Suggestion Fail:", res);
-      //vm.suggestions = {"suggestions": [{"text": "ERROR"}]};
     }
-
 
   }
 
