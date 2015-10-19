@@ -57,7 +57,7 @@
 
     function getBestAnswerSuccess(res) {
       console.log("getBestAnswerSuccess: ", res);
-      if(res.data.length == 0) {
+      if(res.data == null) {
         UserDataSvc.put("app.noAnswerYet:newQuestion", vm.searchText);
         $state.go('app.noAnswerYet');
       } else {
@@ -72,4 +72,5 @@
 
   }
 
-}());
+})();
+

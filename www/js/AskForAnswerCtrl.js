@@ -19,6 +19,11 @@
       vm.searchText = item.text;
     };
 
+    vm.submit = function() {
+      TheBestSvc.postUserAnswer(vm.question, vm.searchText)
+        .then(postUserAnswerSuccess, postUserAnswerFail);
+    };
+
     activate();
 
     ////
@@ -35,7 +40,7 @@
     }
 
     function getSystemQuestionSuccess(res) {
-      vm.system_question = "What is the best " + res.data.items[0].q + " ?";
+      vm.system_question = "What is the best " + res.data.q + " ?";
     }
 
     function getSystemQuestionFail(res) {
@@ -50,7 +55,14 @@
       console.log("Get Suggestion Fail:", res);
     }
 
+    function postUserAnswerSuccess(res) {
+      console.log("Post USer Answer Success:", res);
+      $state.go('app.thanksForAnswer');
+    }
+
+    function postUserAnswerFail(res) {
+      console.log("Post User Answer Fail:", res);
+    }
   }
 
-}());
-
+})();

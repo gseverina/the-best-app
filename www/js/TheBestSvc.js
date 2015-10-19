@@ -51,7 +51,7 @@
 
     function postUserAnswer(q, a) {
       var url = api + 'user_answer';
-      var data = '{"q": "' + q + '", "a": ' + a + '}';
+      var data = '{"q": "' + q + '", "a": "' + a + '"}';
 
       return $http.post(url, data);
     }
@@ -64,4 +64,4 @@
     }
 
   }
-}());
+})();
