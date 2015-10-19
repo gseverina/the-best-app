@@ -8,6 +8,7 @@
   function AskForAnswerCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
 
     var vm = this;
+    vm.items = [];
     vm.question = "";
     vm.sys_q = "";
 
@@ -22,12 +23,23 @@
 
     vm.submit = function() {
       TheBestSvc.postUserAnswer(vm.sys_q, vm.searchText)
-        .then(postUserAnswerSuccess, postUserAnswerFail);
+        .then(postUserAnswerSuccess, postUserAnswerFail)
+        .finally(function(){
+          clearForm();
+        });
+
+
     };
 
     activate();
 
     ////
+
+    function clearForm(){
+      vm.search.$setPristine();
+      vm.searchText = "";
+      vm.items = [];
+    }
 
     function activate() {
       vm.question = UserDataSvc.get("app.askForAnswer:question");

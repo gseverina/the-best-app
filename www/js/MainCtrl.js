@@ -29,6 +29,7 @@
       TheBestSvc.getBestAnswer(vm.searchText)
         .then(getBestAnswerSuccess, getBestAnswerFail)
         .finally(function(){
+          clearForm();
           vm.hide();
         });
     };
@@ -45,6 +46,11 @@
 
 
     /////
+    function clearForm(){
+      vm.search.$setPristine();
+      vm.searchText = "";
+      vm.items = [];
+    }
 
     function getSuggestionForQuestionSuccess(res) {
       console.log("getSuggestionForQuestionSuccess: ", res);

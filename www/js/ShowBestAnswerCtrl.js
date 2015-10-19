@@ -11,6 +11,10 @@
     vm.question = "";
     vm.best_answer = "";
 
+    vm.askAgain = function() {
+      $state.go('app.main');
+    };
+
     activate();
 
     ////
