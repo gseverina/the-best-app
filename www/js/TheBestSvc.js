@@ -31,8 +31,8 @@
       return $http.get(url);
     }
 
-    function getBestAnswer(question) {
-      var url = api + 'best_answer?q=' + question;
+    function getBestAnswer(user_question) {
+      var url = api + 'best_answer?q=' + user_question;
       return $http.get(url);
     }
 
@@ -43,8 +43,8 @@
       return $http.post(url, data);
     }
 
-    function getSystemQuestion() {
-      var url = api + 'system_question';
+    function getSystemQuestion(user_question) {
+      var url = api + 'system_question?q=' + user_question;
       return $http.get(url);
 
     }

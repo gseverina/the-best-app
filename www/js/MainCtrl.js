@@ -62,7 +62,12 @@
         UserDataSvc.put("app.noAnswerYet:newQuestion", vm.searchText);
         $state.go('app.noAnswerYet');
       } else {
-        UserDataSvc.put('best_answer', res.data.a);
+        if(res.data.a == null) {
+          UserDataSvc.put('show_best_answer', 'no');
+        } else {
+          UserDataSvc.put('show_best_answer', 'yes');
+          UserDataSvc.put('best_answer', res.data.a);
+        }
         UserDataSvc.put("app.askForAnswer:question", vm.searchText);
         $state.go('app.askForAnswer');
       }

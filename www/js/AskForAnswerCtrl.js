@@ -36,7 +36,7 @@
       }
       vm.title = "Please answer this while we get you to the best " + vm.question;
 
-      TheBestSvc.getSystemQuestion()
+      TheBestSvc.getSystemQuestion(vm.question)
         .then(getSystemQuestionSuccess, getSystemQuestionFail);
     }
 
