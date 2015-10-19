@@ -10,6 +10,8 @@ angular
     'MainCtrl',
     'AskForAnswerCtrl',
     'NoAnswerYetCtrl',
+    'ThanksForAnswerCtrl',
+    'ShowBestAnswerCtrl',
     'QSuggestionsCtrl'
   ])
 
@@ -60,6 +62,26 @@ angular
         'menuContent': {
           templateUrl: 'templates/noAnswerYet.html',
           controller: 'NoAnswerYetCtrl as vm'
+        }
+      }
+    })
+
+    .state('app.thanksForAnswer', {
+    url: '/thanksForAnswer',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/thanksForAnswer.html',
+        controller: 'ThanksForAnswerCtrl as vm'
+      }
+    }
+    })
+
+    .state('app.showBestAnswer', {
+      url: '/showBestAnswer',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/showBestAnswer.html',
+          controller: 'ShowBestAnswerCtrl as vm'
         }
       }
     })

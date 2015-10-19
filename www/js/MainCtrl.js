@@ -25,6 +25,7 @@
 
     vm.submit = function() {
       vm.show('looking for the best...');
+      UserDataSvc.put('user_question', vm.searchText);
       TheBestSvc.getBestAnswer(vm.searchText)
         .then(getBestAnswerSuccess, getBestAnswerFail)
         .finally(function(){
@@ -61,6 +62,7 @@
         UserDataSvc.put("app.noAnswerYet:newQuestion", vm.searchText);
         $state.go('app.noAnswerYet');
       } else {
+        UserDataSvc.put('best_answer', res.data.a);
         UserDataSvc.put("app.askForAnswer:question", vm.searchText);
         $state.go('app.askForAnswer');
       }

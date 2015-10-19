@@ -9,9 +9,10 @@
 
     var vm = this;
     vm.question = "";
+    vm.sys_q = "";
 
     vm.onChange = function() {
-      TheBestSvc.getSuggestionForAnswer(vm.question, vm.searchText)
+      TheBestSvc.getSuggestionForAnswer(vm.sys_q, vm.searchText)
         .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail);
     };
 
@@ -20,7 +21,7 @@
     };
 
     vm.submit = function() {
-      TheBestSvc.postUserAnswer(vm.question, vm.searchText)
+      TheBestSvc.postUserAnswer(vm.sys_q, vm.searchText)
         .then(postUserAnswerSuccess, postUserAnswerFail);
     };
 
@@ -40,7 +41,8 @@
     }
 
     function getSystemQuestionSuccess(res) {
-      vm.system_question = "What is the best " + res.data.q + " ?";
+      vm.sys_q = res.data.q;
+      vm.system_question = "What is the best " + vm.sys_q + " ?";
     }
 
     function getSystemQuestionFail(res) {
