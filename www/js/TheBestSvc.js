@@ -5,8 +5,7 @@
     .factory('TheBestSvc', TheBestSvc);
 
   function TheBestSvc($http) {
-
-    var api = 'http://52.88.14.176:10001/api/';
+    var api = 'http://52.89.226.76:10001/api/';
 
     return {
       getSuggestionForQuestion: getSuggestionForQuestion,
