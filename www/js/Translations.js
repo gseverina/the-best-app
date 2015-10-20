@@ -7,14 +7,14 @@
       translationsEN: {
         HEADLINE: 'HI!',
         MAIN : {
-          TITLE: 'The best:'
+          TITLE: 'The Best:'
         }
       },
       //Spanish
       translationsES: {
         HEADLINE: 'HOLA!',
         MAIN : {
-          TITLE: 'El mejor:'
+          TITLE: 'El Mejor:'
         }
       }
     });

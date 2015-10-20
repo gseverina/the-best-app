@@ -26,7 +26,7 @@
         vm.title = "Your answer will be ready in " + i + "...";
         for(i = 3; i>0; i = i - 1) {
           $timeout(function () {
-            console.log("--------------------------");
+            //console.log("--------------------------");
             i = i - 1;
             vm.title = "Your answer will be ready in " + i + "...";
           }, 1000);
