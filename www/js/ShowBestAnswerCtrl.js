@@ -8,7 +8,7 @@
   function ShowBestAnswerCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
 
     var vm = this;
-    vm.question = "";
+    vm.user_question = "";
     vm.best_answer = "";
 
     vm.askAgain = function() {
@@ -21,7 +21,7 @@
 
     function activate() {
       vm.best_answer = UserDataSvc.get('best_answer');
-      vm.question = UserDataSvc.get('user_question');
+      vm.user_question = UserDataSvc.get('user_question');
     }
   }
 

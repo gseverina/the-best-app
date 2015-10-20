@@ -16,11 +16,12 @@
     //////
 
     function put(id, data) {
+      console.log("UserDataSvc put: ", id, data);
       params[id] = data;
     }
 
     function get(id) {
-      console.log("----> get: ", id, params);
+      console.log("UserDataSvc get: ", id, params);
       return params[id];
     }
   }

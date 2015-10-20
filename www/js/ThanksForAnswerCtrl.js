@@ -5,28 +5,37 @@
     .module('ThanksForAnswerCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('ThanksForAnswerCtrl', ThanksForAnswerCtrl);
 
-  function ThanksForAnswerCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
+  function ThanksForAnswerCtrl($state, $ionicLoading, $timeout, TheBestSvc, UserDataSvc) {
 
     var vm = this;
-    vm.num = "";
+    vm.num = 0;
+    vm.title = "";
+
+    vm.askAgain = function() {
+      $state.go('app.main');
+    };
 
     activate();
 
     ////
 
     function activate() {
-      vm.num = 0;
-      vm.result = "";
-      //todo: wait 3 seconds...
       var show_best_answer = UserDataSvc.get('show_best_answer');
       if(show_best_answer == 'yes') {
-        vm.result = "Your answer will be ready in 3...";
+        var i = 3;
+        vm.title = "Your answer will be ready in " + i + "...";
+        for(i = 3; i>0; i = i - 1) {
+          $timeout(function () {
+            console.log("--------------------------");
+            i = i - 1;
+            vm.title = "Your answer will be ready in " + i + "...";
+          }, 1000);
+        }
         $state.go('app.showBestAnswer');
       } else {
-        vm.result = "We don't have an answer for you yet :(";
+        vm.title = "We don't have an answer for you yet :(";
       }
     }
   }
-
 
 })();

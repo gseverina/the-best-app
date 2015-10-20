@@ -26,7 +26,10 @@ angular
     });
   })
 
-  .config(function($stateProvider, $urlRouterProvider, $translateProvider, Translations) {
+  .config(function($stateProvider, $urlRouterProvider, $translateProvider, $ionicConfigProvider, Translations) {
+
+    $ionicConfigProvider.views.maxCache( 0 );
+
     $stateProvider
 
     .state('app', {

@@ -44,8 +44,18 @@
       $ionicLoading.hide();
     };
 
+    activate();
 
     /////
+
+    function activate() {
+      UserDataSvc.put("user_question", null);
+      UserDataSvc.put("user_answer", null);
+      UserDataSvc.put("system_question", null);
+      UserDataSvc.put("best_answer", null);
+      UserDataSvc.put("show_best_answer", null);
+    }
+
     function clearForm(){
       vm.search.$setPristine();
       vm.searchText = "";
@@ -65,7 +75,6 @@
     function getBestAnswerSuccess(res) {
       console.log("getBestAnswerSuccess: ", res);
       if(res.data == null) {
-        UserDataSvc.put("app.noAnswerYet:newQuestion", vm.searchText);
         $state.go('app.noAnswerYet');
       } else {
         if(res.data.a == null) {
@@ -74,7 +83,6 @@
           UserDataSvc.put('show_best_answer', 'yes');
           UserDataSvc.put('best_answer', res.data.a);
         }
-        UserDataSvc.put("app.askForAnswer:question", vm.searchText);
         $state.go('app.askForAnswer');
       }
     }

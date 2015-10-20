@@ -3,13 +3,13 @@
 
     <div class="row-wrap">
       <div class="item item-text-wrap">
-        <h2>The best {{vm.question}} is {{vm.best_answer}}</h2>
+        <h2>The best {{vm.user_question}} is {{vm.best_answer}}</h2>
+        <hr>
+        <button ng-click="vm.askAgain()" class="button button-small button-stable icon-left ion-search">
+          Ask again
+        </button>
+
       </div>
     </div>
-    <hr>
-    <button ng-click="vm.askAgain()" class="button button-small button-stable icon-left ion-search">
-      Ask again
-    </button>
-
   </ion-content>
 </ion-view>
