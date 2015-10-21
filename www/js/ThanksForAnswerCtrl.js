@@ -21,7 +21,7 @@
 
     function activate() {
       var show_best_answer = UserDataSvc.get('show_best_answer');
-      if(show_best_answer == 'yes') {
+      if(show_best_answer == 'yes') { //yes
         var i = 3;
         vm.title = "Your answer will be ready in " + i + "...";
         for(i = 3; i>0; i = i - 1) {
@@ -32,8 +32,10 @@
           }, 1000);
         }
         $state.go('app.showBestAnswer');
-      } else {
-        vm.title = "We don't have an answer for you yet :(";
+      } else if(show_best_answer == "no") { //no
+          vm.title = "We don't have an answer for you yet :(";
+      } else { // nah
+        vm.title = "";
       }
     }
   }

@@ -12,6 +12,7 @@ angular
     'NoAnswerYetCtrl',
     'ThanksForAnswerCtrl',
     'ShowBestAnswerCtrl',
+    'AskForBetterAnswerCtrl',
     'QSuggestionsCtrl'
   ])
 
@@ -89,7 +90,17 @@ angular
       }
     })
 
-      .state('app.result', {
+    .state('app.askForBetterAnswer', {
+      url: '/askForBetterAnswer',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/askForBetterAnswer.html',
+          controller: 'AskForBetterAnswerCtrl as vm'
+        }
+      }
+    })
+
+    .state('app.result', {
       url: '/result',
       views: {
         'menuContent': {

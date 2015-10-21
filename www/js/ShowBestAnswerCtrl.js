@@ -26,7 +26,7 @@
     };
 
     vm.nah = function () {
-      $state.go('app.main');
+      $state.go('app.askForBetterAnswer');
     };
 
     vm.show = function($template) {
