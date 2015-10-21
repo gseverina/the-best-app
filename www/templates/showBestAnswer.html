@@ -1,22 +1,24 @@
 <ion-view view-title="The Best">
-  <ion-content class="badge">
+  <ion-content>
+    <div class="card">
 
-    <div class="row-wrap">
-      <div class="item item-text-wrap">
-        <h1>The best {{vm.user_question}} is {{vm.best_answer}}</h1>
-        <hr>
-        <button ng-click="vm.agree()" class="button button-stable icon-left ion-thumbsup">
-          Agree!
-        </button>
-        <button ng-click="vm.nah()" class="button button-stable icon-left ion-thumbsdown">
-          Nah...
-        </button>
-        <hr>
-        <button ng-click="vm.askAgain()" class="button button-stable icon-left ion-search">
-          Ask again
-        </button>
+      <div class="row-wrap">
+        <div class="item item-text-wrap text-center">
+          <h1>The best {{vm.user_question}} is {{vm.best_answer}}</h1>
+          <hr>
+          <button ng-click="vm.agree()" class="button button-stable icon-left ion-thumbsup">
+            Agree!
+          </button>
+          <button ng-click="vm.nah()" class="button button-stable icon-left ion-thumbsdown">
+            Nah...
+          </button>
+          <hr>
+          <button ng-click="vm.askAgain()" class="button button-stable icon-left ion-search">
+            Ask again
+          </button>
+        </div>
       </div>
-    </div>
 
+    </div>
   </ion-content>
 </ion-view>

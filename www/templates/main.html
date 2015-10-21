@@ -1,37 +1,39 @@
 <ion-view view-title="The Best">
-  <ion-content class="badge">
-    <form name="vm.search" ng-submit="vm.submit()">
+  <ion-content>
+    <div class="card">
+      <form name="vm.search" ng-submit="vm.submit()">
 
-      <div class="row-wrap">
-        <div class="item item-text-wrap">
-          <h1 translate="MAIN.TITLE"></h1>
+        <div class="row-wrap">
+          <div class="item item-text-wrap text-center">
+            <h1 translate="MAIN.TITLE"></h1>
+          </div>
         </div>
-      </div>
-      <div class="item item-input-inset">
-        <label class="item-input-wrapper">
-          <i class="icon ion-search placeholder-icon"></i>
-          <input ng-focus="vm.writing = true"
-                 ng-blur="vm.writing = false"
-                 type="search"
-                 placeholder="Search"
-                 ng-model="vm.searchText"
-                 ng-change="vm.onChange()"
-                 required lowercase>
-        </label>
-        <button type="submit"
-                class="button icon-left ion-search button-small button-positive"
-                ng-disabled="vm.search.$invalid">Go!</button>
-      </div>
 
-      <div class="list">
-        <div ng-show="vm.search.$valid" class="item item-button-right" ng-repeat="item in vm.items" ng-click="vm.selectedItem(item)">
-          {{item.text}}
-          <button class="button button-clear">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input ng-focus="vm.writing = true"
+                   ng-blur="vm.writing = false"
+                   type="search"
+                   placeholder="Search"
+                   ng-model="vm.searchText"
+                   ng-change="vm.onChange()"
+                   required lowercase>
+          </label>
+          <button type="submit"
+                  class="button icon-left ion-search button-small button-positive"
+                  ng-disabled="vm.search.$invalid">Go!</button>
+        </div>
+
+        <div class="list" ng-show="vm.search.$valid">
+          <a class="item item-icon-left item-icon-right" ng-show="vm.search.$valid" ng-repeat="item in vm.items" ng-click="vm.selectedItem(item)">
+            <i class="icon ion-android-search"></i>
+            {{item.text}}
             <i class="icon ion-arrow-graph-up-left"></i>
-          </button>
+          </a>
         </div>
-      </div>
 
-    </form>
+      </form>
+    </div>
   </ion-content>
 </ion-view>
