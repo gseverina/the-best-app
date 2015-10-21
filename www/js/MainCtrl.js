@@ -5,7 +5,7 @@
     .module('MainCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('MainCtrl', MainCtrl);
 
-  function MainCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
+  function MainCtrl($state, $ionicLoading, $ionicHistory, TheBestSvc, UserDataSvc) {
     var vm = this;
     vm.name = "Actor";
     vm.items = [];
@@ -49,6 +49,8 @@
     /////
 
     function activate() {
+      $ionicHistory.clearHistory();
+      $ionicHistory.enabledBack(false);
       UserDataSvc.put("user_question", null);
       UserDataSvc.put("user_answer", null);
       UserDataSvc.put("system_question", null);
