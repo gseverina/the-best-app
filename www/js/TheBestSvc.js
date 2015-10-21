@@ -14,7 +14,7 @@
       postNewQuestion: postNewQuestion,
       getSystemQuestion: getSystemQuestion,
       postUserAnswer: postUserAnswer,
-      vote: vote
+      postAction: postAction
     };
 
     ////
@@ -55,9 +55,9 @@
       return $http.post(url, data);
     }
 
-    function vote(q, a) {
-      var url = api + 'vote';
-      var data = '{"q": "' + q + '", "a": ' + a + '}';
+    function postAction(t, q, a) {
+      var url = api + 'action';
+      var data = '{"type": "' + t + '", "q": "' + q + '", "a": "' + a + '"}';
 
       return $http.post(url, data);
     }

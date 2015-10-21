@@ -16,11 +16,27 @@
     };
 
     vm.agree = function() {
-
+      vm.show('voting...');
+      TheBestSvc.postAction('VOTE', vm.user_question, vm.best_answer)
+        .then(postActionSuccess, postActionFail)
+        .finally(function(){
+          vm.hide();
+          $state.go('app.main');
+        });
     };
 
     vm.nah = function () {
+      $state.go('app.main');
+    };
 
+    vm.show = function($template) {
+      $ionicLoading.show({
+        template: $template
+      });
+    };
+
+    vm.hide = function(){
+      $ionicLoading.hide();
     };
 
     activate();
@@ -33,6 +49,14 @@
       if(!vm.best_answer || !vm.user_question) {
         $state.go('app.main');
       }
+    }
+
+    function postActionSuccess(res) {
+      console.log("postActionSuccess: ", res);
+    }
+
+    function postActionFail(res) {
+      console.log("postActionFail: ", res);
     }
   }
 
