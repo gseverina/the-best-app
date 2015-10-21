@@ -13,6 +13,7 @@
     vm.title2 = "";
     vm.user_question = "";
     vm.system_question = "";
+    vm.next_screen = "";
 
     vm.onChange = function() {
       TheBestSvc.getSuggestionForAnswer(vm.system_question, vm.searchText)
@@ -62,6 +63,13 @@
         $state.go('app.main');
       }
       vm.title = "Please answer this while we get you to the best " + vm.user_question;
+
+      var show_best_answer = UserDataSvc.get("show_best_answer");
+      if(!show_best_answer || show_best_answer == 'no') {
+        vm.next_screen = "app.main";
+      } else {
+        vm.next_screen = "app.showBestAnswer";
+      }
 
       TheBestSvc.getSystemQuestion(vm.user_question)
         .then(getSystemQuestionSuccess, getSystemQuestionFail);

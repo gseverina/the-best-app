@@ -1,24 +1,37 @@
 <ion-view view-title="The Best">
   <ion-content>
     <div class="card">
+
       <div class="row-wrap">
         <div class="item item-text-wrap text-center">
-          <h2>{{vm.title1}}</h2>
-          <hr>
-          <h2>{{vm.title2}}</h2>
+          <h1>Good one!</h1>
+          <h2>you are the first to ask for the best</h2>
+          <h2 class="assertive">{{vm.user_question}}</h2>
           <br>
-          <h4><input type="checkbox">keep me posted</h4>
           <hr>
-          <h2>{{vm.title3}}</h2>
           <br>
-          <button ng-click="vm.askYourFriends()" class="button button-stable icon-left ion-share">
-            Ask your friends
-          </button>
-          <button ng-click="vm.askAgain()" class="button button-stable icon-left ion-search">
-            Ask again
-          </button>
+          <h2>We'll let you know when we have an answer.</h2>
+          <br>
+          <h3><input type="checkbox">keep me posted</h3>
+          <br>
+          <hr>
+          <br>
+          <h2>Ask your friends to get the answer quicker!</h2>
+          <br>
+          <div class="row">
+            <div class="col">
+              <button ng-click="vm.askYourFriends()" class="button button-block button-positive icon-left ion-share">
+                Ask your friends
+              </button>
+            </div>
+            <div class="col">
+              <button ng-click="vm.askAgain()" class="button button-block button-positive icon-left ion-search">
+                Ask again
+              </button>
+            </div>
         </div>
       </div>
+
     </div>
   </ion-content>
 </ion-view>

@@ -32,9 +32,6 @@
       if(!vm.user_question) {
         $state.go("app.main");
       }
-      vm.title1 = "Good one! you are the first to ask for the best " + vm.user_question;
-      vm.title2 = "We'll let you know when we have an answer.";
-      vm.title3 = "Ask your friends to get the answer quicker!";
       vm.postNewQuestion();
     }
 
