@@ -62,7 +62,6 @@
       if(!vm.user_question) {
         $state.go('app.main');
       }
-      vm.title = "Please answer this while we get you to the best " + vm.user_question;
 
       var show_best_answer = UserDataSvc.get("show_best_answer");
       if(!show_best_answer || show_best_answer == 'no') {

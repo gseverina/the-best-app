@@ -15,12 +15,13 @@
             <input ng-focus="vm.writing = true"
                    ng-blur="vm.writing = false"
                    type="search"
-                   placeholder="Search"
+                   placeholder="{{'SEARCH' | translate}}"
                    ng-model="vm.searchText"
                    ng-change="vm.onChange()"
                    required lowercase>
           </label>
           <button type="submit"
+                  translate="GO"
                   class="button icon-left ion-search button-small button-positive"
                   ng-disabled="vm.search.$invalid">Go!</button>
         </div>
