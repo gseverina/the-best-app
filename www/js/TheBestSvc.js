@@ -10,6 +10,7 @@
     return {
       getSuggestionForQuestion: getSuggestionForQuestion,
       getSuggestionForAnswer: getSuggestionForAnswer,
+      getSystemSuggestionsForQuestions: getSystemSuggestionsForQuestions,
       getBestAnswer: getBestAnswer,
       postNewQuestion: postNewQuestion,
       getSystemQuestion: getSystemQuestion,
@@ -20,13 +21,17 @@
     ////
 
     function getSuggestionForQuestion(text) {
-      //ex: http://52.88.14.176:10001/api/suggestions?type=q&text=h
       var url = api + 'suggestions?type=q&text=' + text;
       return $http.get(url);
     }
 
     function getSuggestionForAnswer(question, text) {
       var url = api + 'suggestions?type=a&q=' + question + '&text=' + text;
+      return $http.get(url);
+    }
+
+    function getSystemSuggestionsForQuestions() {
+      var url = api + 'suggestions?type=sysq';
       return $http.get(url);
     }
 

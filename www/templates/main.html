@@ -35,5 +35,14 @@
 
       </form>
     </div>
+
+    <div class="card" ng-show="vm.sysq.length > 0">
+      <ul class="list">
+        <li class="item" ng-click="vm.selectedItem(item)" ng-repeat="item in vm.sysq">
+          {{item.text}}
+        </li>
+      </ul>
+    </div>
+
   </ion-content>
 </ion-view>

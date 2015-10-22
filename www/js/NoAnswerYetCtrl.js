@@ -23,6 +23,10 @@
         .then(postNewQuestionSuccess, postNewQuestionFail);
     };
 
+    vm.askForBetterAnswer = function () {
+      $state.go('app.askForBetterAnswer');
+    };
+
     activate();
 
     ///

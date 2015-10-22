@@ -9,6 +9,7 @@
     var vm = this;
     vm.name = "Actor";
     vm.items = [];
+    vm.sysq = [];
     vm.searchText = "";
     vm.writing = false;
 
@@ -56,12 +57,24 @@
       UserDataSvc.put("system_question", null);
       UserDataSvc.put("best_answer", null);
       UserDataSvc.put("show_best_answer", null);
+      TheBestSvc.getSystemSuggestionsForQuestions()
+        .then(getSystemSuggestionsForQuestionsSuccess, getSystemSuggestionsForQuestionsFail)
     }
 
     function clearForm(){
       vm.search.$setPristine();
       vm.searchText = "";
       vm.items = [];
+    }
+
+    function getSystemSuggestionsForQuestionsSuccess(res) {
+      console.log("getSystemSuggestionsForQuestionsSuccess: ", res);
+      vm.sysq = res.data.suggestions;
+    }
+
+    function getSystemSuggestionsForQuestionsFail(res) {
+      console.log("getSystemSuggestionsForQuestionsFail Fail:", res);
+      vm.sysq = {"suggestions": [{"text": "ERROR"}]};
     }
 
     function getSuggestionForQuestionSuccess(res) {
@@ -76,17 +89,23 @@
 
     function getBestAnswerSuccess(res) {
       console.log("getBestAnswerSuccess: ", res);
+      var go = "";
       if(res.data == null) {
-        $state.go('app.noAnswerYet');
+        //Question does not exists...
+        go = 'app.noAnswerYet';
       } else {
         if(res.data.a == null) {
+          //Question exists but no answer yet...
           UserDataSvc.put('show_best_answer', 'no');
+          go = 'app.noAnswerYet';
         } else {
+          //there is best answer...
           UserDataSvc.put('show_best_answer', 'yes');
           UserDataSvc.put('best_answer', res.data.a);
+          go = 'app.askForAnswer';
         }
-        $state.go('app.askForAnswer');
       }
+      $state.go(go);
     }
 
     function getBestAnswerFail(res) {
