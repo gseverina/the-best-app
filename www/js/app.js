@@ -118,7 +118,7 @@ angular
       .translations('en', Translations.translationsEN)
       .translations('es', Translations.translationsES)
       .useSanitizeValueStrategy('sanitize')
-      .preferredLanguage('en');
+      .preferredLanguage('es');
   });
 
 

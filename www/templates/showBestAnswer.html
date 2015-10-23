@@ -6,23 +6,24 @@
         <div class="item item-text-wrap text-center">
           <h1>The Best</h1>
           <h1 class="assertive">{{vm.user_question}}</h1>
-          <h1>is {{vm.best_answer}}</h1>
+          <h1 translate="IS"></h1>
+          <h1>{{vm.best_answer}}</h1>
           <hr>
           <div class="row">
             <div class="col">
-              <button ng-click="vm.agree()" class="button button-block button-balanced icon-left ion-thumbsup">
+              <button translate="AGREE" ng-click="vm.agree()" class="button button-block button-balanced icon-left ion-thumbsup">
                 Agree!
               </button>
             </div>
             <div class="col">
-              <button ng-click="vm.nah()" class="button button-block button-assertive icon-left ion-thumbsdown">
+              <button translate="NAH"ng-click="vm.nah()" class="button button-block button-assertive icon-left ion-thumbsdown">
                 Nah...
               </button>
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <button ng-click="vm.askAgain()" class="button button-block button-positive icon-left ion-search">
+              <button translate="ASK_AGAIN" ng-click="vm.askAgain()" class="button button-block button-positive icon-left ion-search">
                 Ask again
               </button>
             </div>

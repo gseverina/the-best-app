@@ -5,10 +5,9 @@
 
         <div class="row-wrap">
           <div class="item item-text-wrap text-center">
-            <h1>The Best</h1>
+            <h1 translate="MAIN.TITLE">The Best</h1>
             <h1 class="assertive">{{vm.user_question}}</h1>
-            <h1>is:</h1>
-            <hr>
+            <h1 translate="IS">is:</h1>
           </div>
         </div>
 
@@ -18,7 +17,7 @@
             <input ng-focus="vm.writing = true"
                    ng-blur="vm.writing = false"
                    type="search"
-                   placeholder="Answer"
+                   placeholder="{{'ANSWER' | translate}}"
                    ng-model="vm.searchText"
                    ng-change="vm.onChange()"
                    required lowercase>

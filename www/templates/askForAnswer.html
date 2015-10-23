@@ -19,12 +19,13 @@
             <input ng-focus="vm.writing = true"
                    ng-blur="vm.writing = false"
                    type="search"
-                   placeholder="Answer"
+                   placeholder="{{'ANSWER' | translate}}"
                    ng-model="vm.searchText"
                    ng-change="vm.onChange()"
                    required lowercase>
           </label>
           <button type="submit"
+                  translate="GO"
                   class="button icon-left ion-search button-small button-positive"
                   ng-disabled="vm.search.$invalid">Go!</button>
         </div>
@@ -42,7 +43,7 @@
   </ion-content>
   <ion-footer-bar class="bar-positive">
     <div class="button-bar">
-      <a class="button" ui-sref="{{vm.next_screen}}">Skip</a>
+      <a class="button" ui-sref="{{vm.next_screen}}" translate="SKIP"></a>
     </div>
   </ion-footer-bar>
 </ion-view>
