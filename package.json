@@ -23,7 +23,12 @@
     "cordova-plugin-x-socialsharing"
   ],
   "cordovaPlatforms": [
-    "android"
+    "android",
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    }
   ],
   "scripts": {
     "postinstall": "bower install"
