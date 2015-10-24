@@ -18,6 +18,7 @@
                    placeholder="{{'SEARCH' | translate}}"
                    ng-model="vm.searchText"
                    ng-change="vm.onChange()"
+                   ng-maxlength="100"
                    required lowercase>
           </label>
           <button type="submit"

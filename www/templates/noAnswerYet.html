@@ -1,36 +1,39 @@
 <ion-view view-title="The Best">
   <ion-content>
-    <div class="card">
 
+    <div class="card">
       <div class="row-wrap">
         <div class="item item-text-wrap text-center">
           <h1 translate="GOODONE">Good one!</h1>
           <h2 translate="YOU_ARE_FIRST">you are the first to ask for the best</h2>
           <h1 class="assertive">{{vm.user_question}}</h1>
-          <hr>
-          <div class="row">
-            <div class="col">
-              <button translate="VOTE_BEST" ng-click="vm.askForBetterAnswer()" class="button button-block button-positive icon-left ion-thumbsup">
-                Vote your best
-              </button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <button translate="ASK_FRIENDS" ng-click="vm.askYourFriends()" class="button button-block button-positive icon-left ion-share">
-                Ask your friends
-              </button>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <button translate="ASK_AGAIN" ng-click="vm.askAgain()" class="button button-block button-positive icon-left ion-search">
-                Ask Again
-              </button>
-            </div>
-          </div>
         </div>
-
+      </div>
     </div>
+
+    <div class="card">
+      <div class="row-stretch">
+        <div class="col">
+          <button translate="VOTE_BEST" ng-click="vm.askForBetterAnswer()" class="button button-block button-positive icon-left ion-thumbsup">
+            Vote your best
+          </button>
+        </div>
+      </div>
+      <div class="row-stretch">
+        <div class="col">
+          <button translate="ASK_FRIENDS" ng-click="vm.askYourFriends()" class="button button-block button-positive icon-left ion-share">
+            Ask your friends
+          </button>
+        </div>
+      </div>
+      <div class="row-stretch">
+        <div class="col">
+          <button translate="ASK_AGAIN" ng-click="vm.askAgain()" class="button button-block button-positive icon-left ion-search">
+            Ask Again
+          </button>
+        </div>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>
