@@ -16,6 +16,9 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="android-minSdkVersion" value="14"/>
+  <preference name="android-targetSdkVersion" value="22"/>
+  <preference name="android-maxSdkVersion" value="23"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
@@ -75,7 +78,4 @@
   <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
   <allow-navigation href="http://*/*"/>
   <hook type="after_prepare" src="package-hooks/add_platform_class.js"/>
-  <preference name="android-minSdkVersion" value="14" />
-  <preference name="android-targetSdkVersion" value="22" />
-  <preference name="android-maxSdkVersion" value="23" />
 </widget>
