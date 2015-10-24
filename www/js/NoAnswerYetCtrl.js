@@ -11,7 +11,11 @@
     vm.user_querstion = "";
 
     vm.askYourFriends = function() {
-      $cordovaSocialSharing.share('What is the best ' + vm.user_question + '?', 'The Best', null, 'http://www.thebest.com');
+      var message = "I have a question for you, what is The Best " + vm.user_question + " ?";
+      var subject = "The Best";
+      var file = null;
+      var link = "http://TheBest.com/answer?q=" + vm.user_question;
+      $cordovaSocialSharing.share(message, subject, file, link);
     };
 
     vm.askAgain = function() {
