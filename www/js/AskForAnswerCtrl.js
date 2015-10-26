@@ -37,9 +37,9 @@
         });
     };
 
-    vm.show = function($template) {
+    vm.show = function(template) {
       $ionicLoading.show({
-        template: $template
+        template: template
       });
     };
 
