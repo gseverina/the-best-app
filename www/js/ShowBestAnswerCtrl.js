@@ -5,7 +5,7 @@
     .module('ShowBestAnswerCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('ShowBestAnswerCtrl', ShowBestAnswerCtrl);
 
-  function ShowBestAnswerCtrl($state, $ionicLoading, $cordovaSocialSharing, TheBestSvc, UserDataSvc) {
+  function ShowBestAnswerCtrl($state, $stateParams, $ionicLoading, $cordovaSocialSharing, TheBestSvc, UserDataSvc) {
 
     var vm = this;
     vm.user_question = "";
@@ -33,7 +33,7 @@
       var message = "I have a question for you, what is The Best " + vm.user_question + " ?";
       var subject = "The Best";
       var file = null;
-      var link = "http://TheBest.com/answer?q=" + vm.user_question;
+      var link = "thebest://app/askForAnswer?user_question=" + vm.user_question;
       $cordovaSocialSharing.share(message, subject, file, link);
     };
 
@@ -41,7 +41,7 @@
       var message = "The Best " + vm.user_question + " is " + vm.best_answer
       var subject = "The Best";
       var file = null;
-      var link = "http://TheBest.com";
+      var link = "thebest://app/main";
       $cordovaSocialSharing.share(message, subject, file, link);
     };
 
@@ -60,6 +60,10 @@
     ////
 
     function activate() {
+      if(typeof $stateParams.user_question !== 'undefined') {
+        //console.log("---> State Params:", $stateParams.user_question);
+      }
+
       vm.best_answer = UserDataSvc.get('best_answer');
       vm.user_question = UserDataSvc.get('user_question');
       if(!vm.best_answer || !vm.user_question) {

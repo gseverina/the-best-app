@@ -5,7 +5,7 @@
     .module('AskForAnswerCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('AskForAnswerCtrl', AskForAnswerCtrl);
 
-  function AskForAnswerCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
+  function AskForAnswerCtrl($state, $stateParams, $ionicLoading, TheBestSvc, UserDataSvc) {
 
     var vm = this;
     vm.items = [];
@@ -58,7 +58,13 @@
     }
 
     function activate() {
-      vm.user_question = UserDataSvc.get("user_question");
+      if(typeof $stateParams.user_question !== 'undefined') {
+        console.log("---> State Params:", $stateParams.user_question);
+        vm.user_question = $stateParams.user_question;
+      } else {
+        vm.user_question = UserDataSvc.get("user_question");
+      }
+
       if(!vm.user_question) {
         $state.go('app.main');
       }

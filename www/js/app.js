@@ -1,11 +1,25 @@
 'use strict';
 
+function handleOpenURL(url) {
+  console.log("received url: " + url);
+
+  var injector = angular.element(document.getElementById('main')).injector();
+  injector.invoke(['$rootScope',
+    function($rootScope) {
+      window.localStorage.setItem("external_load", url);
+      $rootScope.$broadcast('external_load', url);
+    }
+  ]);
+
+}
+
 angular
   .module('TheBest', [
     'ionic',
     'ngCordova',
     'pascalprecht.translate',
     'Translations',
+    'BootstrapCtrl',
     'AppCtrl',
     'MainCtrl',
     'AskForAnswerCtrl',
@@ -16,7 +30,7 @@ angular
     'QSuggestionsCtrl'
   ])
 
-  .run(function($ionicPlatform) {
+  .run(function($ionicPlatform, $rootScope, $state) {
     $ionicPlatform.ready(function() {
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -24,6 +38,9 @@ angular
       if(window.StatusBar) {
         StatusBar.styleDefault();
       }
+      $rootScope.$on('external_load', function(url){
+        $state.go('bootstrap');
+      })
     });
   })
 
@@ -32,6 +49,12 @@ angular
     $ionicConfigProvider.views.maxCache( 0 );
 
     $stateProvider
+
+    .state('bootstrap', {
+      url: '/',
+      templateUrl: 'templates/bootstrap.html',
+      controller: 'BootstrapCtrl as vm'
+    })
 
     .state('app', {
       url: '/app',
@@ -51,7 +74,7 @@ angular
     })
 
     .state('app.askForAnswer', {
-      url: '/askForAnswer',
+      url: '/askForAnswer?user_question',
       views: {
         'menuContent': {
           templateUrl: 'templates/askForAnswer.html',
@@ -81,7 +104,7 @@ angular
     })
 
     .state('app.showBestAnswer', {
-      url: '/showBestAnswer',
+      url: '/showBestAnswer?user_question',
       views: {
         'menuContent': {
           templateUrl: 'templates/showBestAnswer.html',
@@ -100,7 +123,7 @@ angular
       }
     })
 
-    .state('app.result', {
+      .state('app.result', {
       url: '/result',
       views: {
         'menuContent': {
@@ -111,7 +134,7 @@ angular
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/main');
+    $urlRouterProvider.otherwise('/');
 
     //angular-translate configurations
     $translateProvider
@@ -120,5 +143,3 @@ angular
       .useSanitizeValueStrategy('sanitize')
       .preferredLanguage('es');
   });
-
-
