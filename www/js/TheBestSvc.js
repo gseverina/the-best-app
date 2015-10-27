@@ -5,7 +5,7 @@
     .factory('TheBestSvc', TheBestSvc);
 
   function TheBestSvc($http) {
-    var api = 'http://52.89.226.76:10001/api/';
+    var api = 'http://52.89.226.76:10001/api/v1/';
 
     return {
       getSuggestionForQuestion: getSuggestionForQuestion,
@@ -35,8 +35,8 @@
       return $http.get(url);
     }
 
-    function getBestAnswer(user_question) {
-      var url = api + 'best_answer?q=' + user_question;
+    function getBestAnswer(user_question, limit) {
+      var url = api + 'best_answer?q=' + user_question + '&limit=' + limit;
       return $http.get(url);
     }
 
@@ -47,8 +47,8 @@
       return $http.post(url, data);
     }
 
-    function getSystemQuestion(user_question) {
-      var url = api + 'system_question?q=' + user_question;
+    function getSystemQuestion(user_question, limit) {
+      var url = api + 'system_question?q=' + user_question + '&limit=' + limit;
       return $http.get(url);
 
     }

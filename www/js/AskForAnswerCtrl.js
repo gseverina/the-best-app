@@ -14,16 +14,21 @@
     vm.user_question = "";
     vm.system_question = "";
     vm.next_screen = "";
+    vm.best_answers = [];
 
     vm.onChange = function() {
       TheBestSvc.getSuggestionForAnswer(vm.system_question, vm.searchText)
         .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail);
     };
 
-    vm.selectedItem = function(item) {
-      vm.searchText = item.text;
+    vm.selectedItem = function(text) {
+      vm.searchText = text;
       vm.search.$valid = true;
       vm.submit();
+    };
+
+    vm.selectedAnswer = function(answer) {
+      vm.selectedItem(answer.a);
     };
 
     vm.submit = function() {
@@ -58,6 +63,7 @@
     }
 
     function activate() {
+      vm.show('loading...');
       if(typeof $stateParams.user_question !== 'undefined') {
         console.log("---> State Params:", $stateParams.user_question);
         vm.user_question = $stateParams.user_question;
@@ -66,7 +72,9 @@
       }
 
       if(!vm.user_question) {
+        vm.hide();
         $state.go('app.main');
+        return;
       }
 
       var show_best_answer = UserDataSvc.get("show_best_answer");
@@ -76,14 +84,20 @@
         vm.next_screen = "app.showBestAnswer";
       }
 
-      TheBestSvc.getSystemQuestion(vm.user_question)
-        .then(getSystemQuestionSuccess, getSystemQuestionFail);
+      TheBestSvc.getSystemQuestion(vm.user_question, 1)
+        .then(getSystemQuestionSuccess, getSystemQuestionFail)
+        .finally(function(){
+          vm.hide();
+        });
     }
 
     function getSystemQuestionSuccess(res) {
-      vm.system_question = res.data.q;
+      vm.system_question = res.data.questions[0].q;
       vm.title2 = "What is the best " + vm.system_question + " ?";
       UserDataSvc.put("system_question", vm.system_question);
+
+      TheBestSvc.getBestAnswer(vm.system_question, 5)
+        .then(getBestAnswerSuccess, getBestAnswerFail);
     }
 
     function getSystemQuestionFail(res) {
@@ -106,6 +120,16 @@
     function postUserAnswerFail(res) {
       console.log("Post User Answer Fail:", res);
     }
+
+    function getBestAnswerSuccess(res) {
+      console.log("getBestAnswerSuccess: ", res);
+      vm.best_answers = res.data.answers;
+    }
+
+    function getBestAnswerFail(res) {
+      console.log("getBestAnswerFail: ", res);
+    }
+
   }
 
 })();

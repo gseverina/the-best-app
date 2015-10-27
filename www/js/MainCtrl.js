@@ -27,7 +27,7 @@
     vm.submit = function() {
       vm.show('looking for the best...');
       UserDataSvc.put('user_question', vm.searchText);
-      TheBestSvc.getBestAnswer(vm.searchText)
+      TheBestSvc.getBestAnswer(vm.searchText, 1)
         .then(getBestAnswerSuccess, getBestAnswerFail)
         .finally(function(){
           clearForm();
@@ -95,14 +95,14 @@
         //Question does not exists...
         go = 'app.noAnswerYet';
       } else {
-        if(res.data.a == null) {
+        if(res.data.answers.length == 0) {
           //Question exists but no answer yet...
           UserDataSvc.put('show_best_answer', 'no');
           go = 'app.noAnswerYet';
         } else {
           //there is best answer...
           UserDataSvc.put('show_best_answer', 'yes');
-          UserDataSvc.put('best_answer', res.data.a);
+          UserDataSvc.put('best_answer', res.data.answers[0].a);
           go = 'app.askForAnswer';
         }
       }

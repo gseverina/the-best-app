@@ -1,5 +1,6 @@
 <ion-view view-title="The Best" xmlns="http://www.w3.org/1999/html">
   <ion-content>
+
     <div class="card">
       <form name="vm.search" ng-submit="vm.submit()">
 
@@ -31,7 +32,8 @@
         </div>
 
         <div class="list" ng-show="vm.search.$valid">
-          <a class="item item-icon-left item-icon-right" ng-show="vm.search.$valid" ng-repeat="item in vm.items" ng-click="vm.selectedItem(item)">
+          <a class="item item-icon-left item-icon-right" ng-show="vm.search.$valid" ng-repeat="item in vm.items"
+             ng-click="vm.selectedItem(item.text)">
             <i class="icon ion-android-search"></i>
             {{item.text}}
             <i class="icon ion-arrow-graph-up-left"></i>
@@ -40,6 +42,14 @@
 
       </form>
     </div>
+
+    <div class="card" ng-show="vm.best_answers.length > 0">
+      <a class="item item-icon-left" ng-click="vm.selectedAnswer(answer)" ng-repeat="answer in vm.best_answers">
+        <i class="icon ion-ribbon-a"></i>
+        {{answer.a}}
+      </a>
+    </div>
+
   </ion-content>
   <ion-footer-bar class="bar-positive">
     <div class="button-bar">
