@@ -30,7 +30,7 @@ angular
     'QSuggestionsCtrl'
   ])
 
-  .run(function($ionicPlatform, $rootScope, $state) {
+  .run(function($ionicPlatform, $rootScope, $state, $http) {
     $ionicPlatform.ready(function() {
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -40,7 +40,10 @@ angular
       }
       $rootScope.$on('external_load', function(url){
         $state.go('bootstrap');
-      })
+      });
+
+      //$http.defaults.headers.common['x-session-id'] = '123';
+
     });
   })
 
@@ -119,16 +122,6 @@ angular
         'menuContent': {
           templateUrl: 'templates/askForBetterAnswer.html',
           controller: 'AskForBetterAnswerCtrl as vm'
-        }
-      }
-    })
-
-      .state('app.result', {
-      url: '/result',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/result.html',
-          controller: 'QSuggestionsCtrl as vm'
         }
       }
     });

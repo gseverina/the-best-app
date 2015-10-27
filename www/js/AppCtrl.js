@@ -39,6 +39,14 @@
         $scope.closeLogin();
       }, 1000);
     };
+
+    activate();
+
+    //////
+
+    function activate() {
+      console.log("activate: AppCtrl");
+    }
   }
 
 })();

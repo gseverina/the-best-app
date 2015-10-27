@@ -50,6 +50,7 @@
     /////
 
     function activate() {
+      console.log("activate: MainCtrl");
       $ionicHistory.clearHistory();
       $ionicHistory.enabledBack(false);
       UserDataSvc.put("user_question", null);

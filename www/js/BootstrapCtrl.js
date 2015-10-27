@@ -24,6 +24,7 @@
     };
 
     function activate() {
+      console.log("activate: BootstrapCtrl");
       //var url = "thebest://app/askForAnswer?user_question=celular";
       vm.show('looking for the best...');
       var url =  window.localStorage.getItem("external_load");
