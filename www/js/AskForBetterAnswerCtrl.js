@@ -5,15 +5,22 @@
     .module('AskForBetterAnswerCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('AskForBetterAnswerCtrl', AskForBetterAnswerCtrl);
 
-  function AskForBetterAnswerCtrl($state, $ionicLoading, TheBestSvc, UserDataSvc) {
+  function AskForBetterAnswerCtrl($state, $ionicLoading, $timeout, TheBestSvc, UserDataSvc) {
 
     var vm = this;
+    vm.timerPromise;
     vm.items = [];
     vm.user_question = "";
 
     vm.onChange = function() {
-      TheBestSvc.getSuggestionForAnswer(vm.user_question, vm.searchText)
-        .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail);
+      if(vm.timerPromise) {
+        $timeout.cancel(vm.timerPromise);
+      }
+      vm.timerPromise =
+        $timeout(function() {
+          TheBestSvc.getSuggestionForAnswer(vm.user_question, vm.searchText)
+            .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail)
+        }, 500);
     };
 
     vm.selectedItem = function(item) {

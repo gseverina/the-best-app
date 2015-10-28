@@ -22,7 +22,7 @@
         $timeout(function() {
           TheBestSvc.getSuggestionForQuestion(vm.searchText)
             .then(getSuggestionForQuestionSuccess, getSuggestionForQuestionFail)
-        }, 300);
+        }, 500);
     };
 
     vm.selectedItem = function(item) {

@@ -5,9 +5,10 @@
     .module('AskForAnswerCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('AskForAnswerCtrl', AskForAnswerCtrl);
 
-  function AskForAnswerCtrl($state, $stateParams, $ionicLoading, TheBestSvc, UserDataSvc) {
+  function AskForAnswerCtrl($state, $stateParams, $ionicLoading, $timeout, TheBestSvc, UserDataSvc) {
 
     var vm = this;
+    vm.timerPromise;
     vm.items = [];
     vm.title = "";
     vm.title2 = "";
@@ -17,8 +18,14 @@
     vm.best_answers = [];
 
     vm.onChange = function() {
-      TheBestSvc.getSuggestionForAnswer(vm.system_question, vm.searchText)
-        .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail);
+      if(vm.timerPromise) {
+        $timeout.cancel(vm.timerPromise);
+      }
+      vm.timerPromise =
+        $timeout(function() {
+          TheBestSvc.getSuggestionForAnswer(vm.system_question, vm.searchText)
+            .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail)
+        }, 500);
     };
 
     vm.selectedItem = function(text) {

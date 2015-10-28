@@ -5,7 +5,7 @@
     .module('ShowBestAnswerCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('ShowBestAnswerCtrl', ShowBestAnswerCtrl);
 
-  function ShowBestAnswerCtrl($state, $stateParams, $ionicLoading, $cordovaSocialSharing, TheBestSvc, UserDataSvc) {
+  function ShowBestAnswerCtrl($state, $ionicLoading, $cordovaSocialSharing, TheBestSvc, UserDataSvc) {
 
     var vm = this;
     vm.user_question = "";

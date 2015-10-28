@@ -8,7 +8,7 @@
   function BootstrapCtrl ($state, $timeout, $ionicLoading, TheBestSvc, UserDataSvc) {
 
     var vm = this;
-
+    vm.show('Loading...');
     $timeout(activate, 1000);
 
     /////
