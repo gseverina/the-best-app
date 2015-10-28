@@ -5,8 +5,9 @@
     .module('MainCtrl', ['TheBestSvc','UserDataSvc'])
     .controller('MainCtrl', MainCtrl);
 
-  function MainCtrl($state, $ionicLoading, $ionicHistory, TheBestSvc, UserDataSvc) {
+  function MainCtrl($state, $ionicLoading, $ionicHistory, $timeout, TheBestSvc, UserDataSvc) {
     var vm = this;
+    vm.timerPromise;
     vm.name = "Actor";
     vm.items = [];
     vm.sysq = [];
@@ -14,8 +15,14 @@
     vm.writing = false;
 
     vm.onChange = function() {
-      TheBestSvc.getSuggestionForQuestion(vm.searchText)
-        .then(getSuggestionForQuestionSuccess, getSuggestionForQuestionFail);
+      if(vm.timerPromise) {
+        $timeout.cancel(vm.timerPromise);
+      }
+      vm.timerPromise =
+        $timeout(function() {
+          TheBestSvc.getSuggestionForQuestion(vm.searchText)
+            .then(getSuggestionForQuestionSuccess, getSuggestionForQuestionFail)
+        }, 300);
     };
 
     vm.selectedItem = function(item) {
@@ -91,11 +98,11 @@
     function getBestAnswerSuccess(res) {
       console.log("getBestAnswerSuccess: ", res);
       var go = "";
-      if(res.data == null) {
+      if(res.data.answers.length == 0) {
         //Question does not exists...
         go = 'app.noAnswerYet';
       } else {
-        if(res.data.answers.length == 0) {
+        if(res.data.answers[0].a == null) {
           //Question exists but no answer yet...
           UserDataSvc.put('show_best_answer', 'no');
           go = 'app.noAnswerYet';
