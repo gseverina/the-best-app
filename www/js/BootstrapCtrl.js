@@ -103,12 +103,12 @@
             .finally(function(){
               vm.hide();
             });
-
           $state.go(to, stateParams);
+          vm.hide();
           return;
         }
       }
-
+      vm.hide();
       $state.go('app.main');
     }
 
