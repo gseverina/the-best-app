@@ -30,7 +30,7 @@ angular
     'QSuggestionsCtrl'
   ])
 
-  .run(function($ionicPlatform, $rootScope, $state, $http) {
+  .run(function($ionicPlatform, $rootScope, $state, UserDataSvc) {
     $ionicPlatform.ready(function() {
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -38,6 +38,13 @@ angular
       if(window.StatusBar) {
         StatusBar.styleDefault();
       }
+      var device = ionic.Platform.device();
+      if(device) {
+        UserDataSvc.put('device_id', device.uuid);
+      } else {
+        UserDataSvc.put('device_id', 'undefined');
+      }
+
       $rootScope.$on('external_load', function(url){
         $state.go('bootstrap');
       });
