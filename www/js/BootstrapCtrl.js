@@ -24,7 +24,7 @@
 
     function activate() {
       console.log("activate: BootstrapCtrl");
-      vm.show('loading...');
+      //vm.show('loading...');
 
       //handling sessionId...
       var device_id = UserDataSvc.get('device_id');
