@@ -5,7 +5,7 @@
     .module('BootstrapCtrl', [])
     .controller('BootstrapCtrl', BootstrapCtrl);
 
-  function BootstrapCtrl ($state, $timeout, $ionicLoading, TheBestSvc, UserDataSvc) {
+  function BootstrapCtrl ($state, $timeout, $ionicLoading, $http, TheBestSvc, UserDataSvc) {
 
     var vm = this;
     $timeout(activate, 1000);
@@ -23,9 +23,20 @@
     };
 
     function activate() {
+      vm.show('loading...');
+
+      //handling sessionId...
+      var device_id = 1234;
+      var sessionId = '1234';
+      TheBestSvc.postSession(device_id)
+        .then(postSessionSuccess, postSessionFail)
+        .finally(function(){
+          sessionId = UserDataSvc.get('sessionId');
+          $http.defaults.headers.common['X-Session-Id'] = sessionId;
+        });
+
       console.log("activate: BootstrapCtrl");
       //var url = "thebest://app/askForAnswer?user_question=celular";
-      vm.show('looking for the best...');
       var url =  window.localStorage.getItem("external_load");
 
       console.log("stored url: " + url);
@@ -55,8 +66,15 @@
         }
       }
 
-      vm.hide();
-      $state.go('app.main');
+      if(sessionId === '1234') {
+        $timeout(function(){
+          vm.hide();
+          $state.go('app.main');
+        },500);
+      } else {
+        vm.hide();
+        $state.go('app.main');
+      }
     }
 
     function getBestAnswerSuccess(res) {
@@ -83,6 +101,15 @@
     function getBestAnswerFail(res) {
       console.log("getBestAnswerFail: ", res);
       $state.go('app.main');
+    }
+
+    function postSessionSuccess(res) {
+      console.log("postSessionSuccess: ", res);
+      UserDataSvc.put('sessionId', res.data.sessionId);
+    }
+
+    function postSessionFail(res){
+      console.log("postSessionFail: ", res);
     }
 
   }

@@ -41,9 +41,6 @@ angular
       $rootScope.$on('external_load', function(url){
         $state.go('bootstrap');
       });
-
-      //$http.defaults.headers.common['x-session-id'] = '123';
-
     });
   })
 

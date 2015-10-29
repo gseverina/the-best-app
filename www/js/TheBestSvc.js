@@ -15,7 +15,8 @@
       postNewQuestion: postNewQuestion,
       getSystemQuestion: getSystemQuestion,
       postUserAnswer: postUserAnswer,
-      postAction: postAction
+      postAction: postAction,
+      postSession: postSession
     };
 
     ////
@@ -63,6 +64,13 @@
     function postAction(t, q, a) {
       var url = api + 'action';
       var data = '{"type": "' + t + '", "q": "' + q + '", "a": "' + a + '"}';
+
+      return $http.post(url, data);
+    }
+
+    function postSession(device_id) {
+      var url = api + 'session';
+      var data = '{"device_id": "' + device_id + '"}';
 
       return $http.post(url, data);
     }
