@@ -16,6 +16,8 @@ function handleOpenURL(url) {
 angular
   .module('TheBest', [
     'ionic',
+    'ionic.service.core',
+    'ionic.service.analytics',
     'ngCordova',
     'pascalprecht.translate',
     'Translations',
@@ -30,14 +32,18 @@ angular
     'QSuggestionsCtrl'
   ])
 
-  .run(function($ionicPlatform, $rootScope, $state, UserDataSvc) {
+  .run(function($ionicPlatform, $rootScope, $state, $ionicAnalytics, UserDataSvc) {
     $ionicPlatform.ready(function() {
+
+      $ionicAnalytics.register();
+
       if(window.cordova && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
       if(window.StatusBar) {
         StatusBar.styleDefault();
       }
+      
       var device = ionic.Platform.device();
       if(device) {
         UserDataSvc.put('device_id', device.uuid);
