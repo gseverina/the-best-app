@@ -58,15 +58,19 @@
 
     function activate() {
       console.log("activate: MainCtrl");
+
       $ionicHistory.clearHistory();
       $ionicHistory.enabledBack(false);
+
       UserDataSvc.put("user_question", null);
       UserDataSvc.put("user_answer", null);
       UserDataSvc.put("system_question", null);
       UserDataSvc.put("best_answer", null);
       UserDataSvc.put("show_best_answer", null);
+      /*
       TheBestSvc.getSystemSuggestionsForQuestions()
-        .then(getSystemSuggestionsForQuestionsSuccess, getSystemSuggestionsForQuestionsFail)
+        .then(getSystemSuggestionsForQuestionsSuccess, getSystemSuggestionsForQuestionsFail);
+      */
     }
 
     function clearForm(){
