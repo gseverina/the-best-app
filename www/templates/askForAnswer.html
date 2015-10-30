@@ -28,7 +28,9 @@
           <button type="submit"
                   translate="GO"
                   class="button icon-left ion-search button-small button-positive"
-                  ng-disabled="vm.search.$invalid">Go!</button>
+                  ng-disabled="vm.search.$invalid"
+                  ion-track-tap="answer"
+                  ion-track-data="{event: askForAnswer.answer}">Go!</button>
         </div>
 
         <div class="list" ng-show="vm.search.$valid">
@@ -43,7 +45,7 @@
       </form>
     </div>
 
-    <div class="card" ng-show="vm.best_answers.length > 0">
+    <div class="card" ng-show="vm.best_answers[0].a != null">
       <a class="item item-icon-left" ng-click="vm.selectedAnswer(answer)" ng-repeat="answer in vm.best_answers">
         <i class="icon ion-ribbon-a"></i>
         {{answer.a}}
@@ -53,7 +55,7 @@
   </ion-content>
   <ion-footer-bar class="bar-positive">
     <div class="button-bar">
-      <a class="button" ui-sref="{{vm.next_screen}}" translate="SKIP"></a>
+      <a class="button" ui-sref="{{vm.next_screen}}" translate="SKIP" ion-track-tap="skip" ion-track-data="{event: askForAnswer.skip}"></a>
     </div>
   </ion-footer-bar>
 </ion-view>

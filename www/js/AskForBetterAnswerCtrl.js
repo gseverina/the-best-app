@@ -20,7 +20,7 @@
         $timeout(function() {
           TheBestSvc.getSuggestionForAnswer(vm.user_question, vm.searchText)
             .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail)
-        }, 500);
+        }, 300);
     };
 
     vm.selectedItem = function(item) {

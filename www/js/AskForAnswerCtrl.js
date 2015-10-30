@@ -15,7 +15,7 @@
     vm.user_question = "";
     vm.system_question = "";
     vm.next_screen = "";
-    vm.best_answers = [];
+    vm.best_answers = {};
 
     vm.onChange = function() {
       if(vm.timerPromise) {
@@ -25,7 +25,7 @@
         $timeout(function() {
           TheBestSvc.getSuggestionForAnswer(vm.system_question, vm.searchText)
             .then(getSuggestionForAnswerSuccess, getSuggestionForAnswerFail)
-        }, 500);
+        }, 300);
     };
 
     vm.selectedItem = function(text) {

@@ -14,21 +14,21 @@
     <div class="card">
       <div class="row-stretch">
         <div class="col">
-          <button translate="VOTE_BEST" ng-click="vm.askForBetterAnswer()" class="button button-block button-positive icon-left ion-thumbsup">
+          <button  ion-track-tap="vote" ion-track-data="{event: noAnswerYet.vote}"translate="VOTE_BEST" ng-click="vm.askForBetterAnswer()" class="button button-block button-positive icon-left ion-thumbsup">
             Vote your best
           </button>
         </div>
       </div>
       <div class="row-stretch">
         <div class="col">
-          <button translate="ASK_FRIENDS" ng-click="vm.askYourFriends()" class="button button-block button-positive icon-left ion-share">
+          <button ion-track-tap="ask_friends" ion-track-data="{event: noAnswerYet.ask_friends}" translate="ASK_FRIENDS" ng-click="vm.askYourFriends()" class="button button-block button-positive icon-left ion-share">
             Ask your friends
           </button>
         </div>
       </div>
       <div class="row-stretch">
         <div class="col">
-          <button translate="ASK_AGAIN" ng-click="vm.askAgain()" class="button button-block button-positive icon-left ion-search">
+          <button ion-track-tap="ask_again" ion-track-data="{event: noAnswerYet.ask_again}" translate="ASK_AGAIN" ng-click="vm.askAgain()" class="button button-block button-positive icon-left ion-search">
             Ask Again
           </button>
         </div>

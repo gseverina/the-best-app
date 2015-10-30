@@ -6,7 +6,7 @@
           <h1 translate="THANKS">Thanks for being Awesome!</h1>
           <h2>{{vm.title}}</h2>
           <hr>
-          <button translate="ASK_AGAIN" ng-click="vm.askAgain()" class="button button-positive icon-left ion-android-search">
+          <button ion-track-tap="ask_again" ion-track-data="{event: thanksForAnswer.ask_again}" translate="ASK_AGAIN" ng-click="vm.askAgain()" class="button button-positive icon-left ion-android-search">
             Ask again
           </button>
         </div>

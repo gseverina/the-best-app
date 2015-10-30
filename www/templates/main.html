@@ -24,7 +24,9 @@
           <button type="submit"
                   translate="GO"
                   class="button icon-left ion-search button-small button-positive"
-                  ng-disabled="vm.search.$invalid">Go!</button>
+                  ng-disabled="vm.search.$invalid"
+                  ion-track-tap="search"
+                  ion-track-data="{ event: 'main.search' }">Go!</button>
         </div>
 
         <div class="list" ng-show="vm.search.$valid">
