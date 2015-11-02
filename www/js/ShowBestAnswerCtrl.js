@@ -34,7 +34,7 @@
       var subject = "The Best";
       var file = null;
       //var link = "thebest://app/askForAnswer?user_question=" + vm.user_question;
-      var link = "android-app://com.ionicframework.thebest572511/askForAnswer?user_question=" + vm.user_question;
+      var link = "android-app://com.ionicframework.thebest572511/thebest/app/askForAnswer?user_question=" + vm.user_question;
       $cordovaSocialSharing.share(message, subject, file, link);
     };
 
@@ -42,7 +42,7 @@
       var message = "The Best " + vm.user_question + " is " + vm.best_answer
       var subject = "The Best";
       var file = null;
-      var link = "thebest://app/main";
+      var link = "android-app://com.ionicframework.thebest572511/thebest/app/main";
       $cordovaSocialSharing.share(message, subject, file, link);
     };
 

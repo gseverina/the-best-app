@@ -14,7 +14,7 @@
       var message = "I have a question for you, what is The Best " + vm.user_question + " ?";
       var subject = "The Best";
       var file = null;
-      var link = "thebest://app/askForAnswer?user_question=" + vm.user_question;
+      var link = "android-app://com.ionicframework.thebest572511/thebest/app/askForAnswer?user_question=" + vm.user_question;
       $cordovaSocialSharing.share(message, subject, file, link);
     };
 

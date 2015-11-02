@@ -7,7 +7,7 @@
       translationsEN: {
         HEADLINE: 'HI!',
         SEARCH: 'Search',
-        GO:'Go!',
+        GO:'Search',
         ANSWER_THIS: 'Answer this while we get you to The Best',
         WHAT_IS_THE_BEST: 'What is The Best',
         SKIP: 'Skip',
@@ -30,7 +30,7 @@
       translationsES: {
         HEADLINE: 'HOLA!',
         SEARCH: 'Buscar',
-        GO:'Ir!',
+        GO:'Buscar',
         ANSWER_THIS: 'Responde ésto mientras buscamos The Best:',
         WHAT_IS_THE_BEST: 'Cuál es The Best',
         SKIP: 'Omitir',
