@@ -4,7 +4,7 @@
     <div class="card">
       <form name="vm.search" ng-submit="vm.submit()">
 
-        <div class="row-wrap">
+        <div class="row-wrap" ng-hide="vm.writing">
           <div class="item item-text-wrap text-center">
             <h2 translate="ANSWER_THIS"></h2>
             <h2 class="assertive">{{vm.user_question}}</h2>

@@ -3,7 +3,7 @@
     <div class="card">
       <form name="vm.search" ng-submit="vm.submit()">
 
-        <div class="row-wrap">
+        <div class="row-wrap" ng-hide="vm.writing">
           <div class="item item-text-wrap text-center">
             <h1 translate="MAIN.TITLE">The Best</h1>
             <h1 class="assertive">{{vm.user_question}}</h1>
