@@ -83,11 +83,13 @@
       var url =  window.localStorage.getItem("external_load");
       console.log("stored url: " + url);
       if(url) {
+        window.localStorage.clear();
+
+        url = decodeURI(url);
+
         var aux = url.split("thebest://");
         var params = aux[1].replace("/",".").split("?");
         var to = params[0];
-
-        window.localStorage.clear();
 
         if(to === "app.askForAnswer") {
           aux = params[1].split('=');
