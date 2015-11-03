@@ -23,10 +23,11 @@
                    required lowercase>
           </label>
           <button type="submit"
-                  class="button icon-left ion-search button-small button-positive"
+                  translate="ANSWER"
+                  class="button icon-left ion-thumbsup button-small button-positive"
                   ng-disabled="vm.search.$invalid"
                   ion-track-tap="answer"
-                  ion-track-data="{ event: 'askForBetterAnswer.answer' }">Go!</button>
+                  ion-track-data="{ event: 'askForBetterAnswer.answer' }">Answer</button>
         </div>
 
         <div class="list" ng-show="vm.search.$valid">
