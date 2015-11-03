@@ -78,7 +78,7 @@
 
     function urlShortener(long_url) {
       var url = api + 'urlshortener';
-      var data = '{"long_url": "' + long_url + '"}';
+      var data = '{"longUrl": "' + long_url + '"}';
 
       return $http.post(url, data);
     }
