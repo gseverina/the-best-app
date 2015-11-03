@@ -16,7 +16,8 @@
       getSystemQuestion: getSystemQuestion,
       postUserAnswer: postUserAnswer,
       postAction: postAction,
-      postSession: postSession
+      postSession: postSession,
+      urlShortener: urlShortener
     };
 
     ////
@@ -71,6 +72,13 @@
     function postSession(device_id) {
       var url = api + 'session';
       var data = '{"device_id": "' + device_id + '"}';
+
+      return $http.post(url, data);
+    }
+
+    function urlShortener(long_url) {
+      var url = api + 'urlshortener';
+      var data = '{"long_url": "' + long_url + '"}';
 
       return $http.post(url, data);
     }
