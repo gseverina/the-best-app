@@ -38,6 +38,9 @@
     }
 
     function getBestAnswer(user_question, limit) {
+      if(typeof optionalArg === 'undefined') {
+        limit = 1;
+      }
       var url = api + 'best_answer?q=' + user_question + '&limit=' + limit;
       return $http.get(url);
     }

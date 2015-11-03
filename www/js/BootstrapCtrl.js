@@ -36,27 +36,27 @@
     function getBestAnswerSuccess(res) {
       console.log("getBestAnswerSuccess: ", res);
       var go = "";
-      if(res.data == null) {
+      if(res.data.answers.length == 0) {
         //Question does not exists...
         go = 'app.noAnswerYet';
       } else {
-        if(res.data.a == null) {
+        if(res.data.answers[0].a == null) {
           //Question exists but no answer yet...
           UserDataSvc.put('show_best_answer', 'no');
           go = 'app.noAnswerYet';
         } else {
           //there is best answer...
           UserDataSvc.put('show_best_answer', 'yes');
-          UserDataSvc.put('best_answer', res.data.a);
+          UserDataSvc.put('best_answer', res.data.answers[0].a);
           go = 'app.askForAnswer';
         }
       }
+      console.log("going to: ", go);
       $state.go(go);
     }
 
     function getBestAnswerFail(res) {
       console.log("getBestAnswerFail: ", res);
-      $state.go('app.main');
     }
 
     function postSessionSuccess(res) {
@@ -103,12 +103,20 @@
             .finally(function(){
               vm.hide();
             });
+
+          console.log("going to: ", to);
           $state.go(to, stateParams);
           vm.hide();
           return;
         }
+
+        vm.hide();
+        console.log("going to: app.main");
+        $state.go('app.main');
+        return;
       }
       vm.hide();
+      console.log("going to: app.main");
       $state.go('app.main');
     }
 
