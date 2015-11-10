@@ -6,12 +6,15 @@
     .controller('MainCtrl', MainCtrl);
 
   function MainCtrl($state, $ionicLoading, $ionicHistory, $timeout, TheBestSvc, UserDataSvc) {
+    var SEARCHPLACEHOLDER_CONSTANT="SEARCH_PLACEHOLDER";
+    var NUMBER_OF_SEARCH_PLACEHOLDER_VARIATIONS=5;
     var vm = this;
     vm.timerPromise;
     vm.name = "Actor";
     vm.items = [];
     vm.sysq = [];
     vm.searchText = "";
+    vm.searchPlaceholder="";
     vm.writing = false;
 
     vm.onChange = function() {
@@ -46,6 +49,10 @@
       $ionicLoading.show({
         template: template
       });
+    };
+
+    vm.getSearchPlaceHolderKey = function(){
+      return SEARCHPLACEHOLDER_CONSTANT+Math.floor((Math.random() * NUMBER_OF_SEARCH_PLACEHOLDER_VARIATIONS) + 1);
     };
 
     vm.hide = function(){
