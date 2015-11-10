@@ -16,7 +16,7 @@
             <input ng-focus="vm.writing = true"
                    ng-blur="vm.writing = false"
                    type="search"
-                   placeholder="{{'SEARCH' | translate}}"
+                   placeholder="{{vm.getSearchPlaceHolderKey() | translate}}"
                    ng-model="vm.searchText"
                    ng-change="vm.onChange()"
                    ng-maxlength="100"
