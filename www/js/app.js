@@ -145,6 +145,6 @@ angular
       .translations('es', Translations.translationsES)
       .useSanitizeValueStrategy('sanitize')
       .preferredLanguage(navigator.language.substr(0,2))
-      .fallbackLanguage('en');
+      .fallbackLanguage('en')
     ;
   });
