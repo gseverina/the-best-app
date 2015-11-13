@@ -4,7 +4,7 @@
   angular.module('Translations', [])
     .constant('Translations', {
       //English
-      translationsEN: {
+      translationsES: {
         HEADLINE: 'HI!',
         SEARCH_PLACEHOLDER1: "sushi restaurant, tomato stain remover",
         SEARCH_PLACEHOLDER2: "muscle car, icecream flavor, beach ",
@@ -34,7 +34,7 @@
         }
       },
       //Spanish
-      translationsES: {
+      translationsEN: {
         HEADLINE: 'HOLA!',
         SEARCH_PLACEHOLDER1: "actor, celular, quita esmalte",
         SEARCH_PLACEHOLDER2: "auto deportivo, sabor de helado, playa",
