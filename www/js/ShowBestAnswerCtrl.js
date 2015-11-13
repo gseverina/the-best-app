@@ -34,7 +34,7 @@
       var subject = "The Best";
       var file = null;
       //var link = "thebest://app/askForAnswer?user_question=" + vm.user_question;
-      var link = "android-app://com.ionicframework.thebest572511/thebest/app/askForAnswer?user_question=" + vm.user_question;
+      var link = "android-app://com.thebest.app/thebest/app/askForAnswer?user_question=" + vm.user_question;
       TheBestSvc.urlShortener(link)
         .then(function(res){
           console.log("urlShortener Success:", res);
@@ -46,7 +46,7 @@
       var message = "The Best " + vm.user_question + " is " + vm.best_answer
       var subject = "The Best";
       var file = null;
-      var link = "android-app://com.ionicframework.thebest572511/thebest/app/main";
+      var link = "android-app://com.thebest.app/thebest/app/main";
       TheBestSvc.urlShortener(link)
         .then(function(res){
           console.log("urlShortener Success:", res);
