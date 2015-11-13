@@ -43,7 +43,7 @@ angular
       if(window.StatusBar) {
         StatusBar.styleDefault();
       }
-      
+
       var device = ionic.Platform.device();
       if(device) {
         UserDataSvc.put('device_id', device.uuid);
@@ -144,5 +144,7 @@ angular
       .translations('en', Translations.translationsEN)
       .translations('es', Translations.translationsES)
       .useSanitizeValueStrategy('sanitize')
-      .preferredLanguage('es');
+      .preferredLanguage(navigator.language.substr(0,2))
+      .fallbackLanguage('en');
+    ;
   });
