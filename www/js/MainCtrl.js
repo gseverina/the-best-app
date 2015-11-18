@@ -121,7 +121,11 @@
           //there is best answer...
           UserDataSvc.put('show_best_answer', 'yes');
           UserDataSvc.put('best_answer', res.data.answers[0].a);
-          go = 'app.askForAnswer';
+          if(Math.random() < 0.2) {
+            go = 'app.askForAnswer';
+          } else {
+            go = 'app.showBestAnswer';
+          }
         }
       }
       $state.go(go);
