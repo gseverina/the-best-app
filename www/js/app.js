@@ -1,7 +1,17 @@
 'use strict';
 
+//Making sure String.format is properly implemented
+String.prototype.format = function() {
+  var formatted = this;
+  for( var arg in arguments ) {
+    formatted = formatted.replace("{" + arg + "}", arguments[arg]);
+  }
+  return formatted;
+};
+
 function handleOpenURL(url) {
   console.log("received url: " + url);
+
 
   var injector = angular.element(document.getElementById('main')).injector();
   injector.invoke(['$rootScope',
