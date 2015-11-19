@@ -13,7 +13,7 @@
         SEARCH_PLACEHOLDER5: "childhood game, jeans brand",
         SEARCH: 'Search',
         GO:'Search',
-        ANSWER_THIS: 'Answer this while we get you to The Best',
+        ANSWER_THIS: 'Help others and answer this first',
         WHAT_IS_THE_BEST: 'What is The Best',
         SKIP: 'Skip',
         ANSWER: "Answer",
@@ -26,9 +26,11 @@
         YOU_ARE_FIRST:"you are the first to ask for The Best",
         VOTE_BEST:"Vote your best",
         ASK_FRIENDS:"Ask your friends",
+        ASK_FRIENDS_MESSAGE:"In your oppinion, 'The Best' {0} is...?",
         IS:"is",
         SHARE: "Share",
-        HELP_OTHERS: "Now, help others find ",
+        SHARE_MESSAGE: "In my opinion, 'The Best' {0} is {1}. ",
+        HELP_OTHERS: "Now, help others finding... ",
         MAIN : {
           TITLE: 'The Best'
         }
@@ -43,7 +45,7 @@
         SEARCH_PLACEHOLDER5: "juego de la infancia, marca de jean",
         SEARCH: "Buscar",
         GO:"Buscar",
-        ANSWER_THIS: "Responde ésto mientras buscamos The Best:",
+        ANSWER_THIS: "Ayuda a otros y responde ",
         WHAT_IS_THE_BEST: 'Cuál es The Best',
         SKIP: "Omitir",
         ANSWER: "Responder",
@@ -56,9 +58,11 @@
         YOU_ARE_FIRST:"Eres el primero en preguntar por The Best",
         VOTE_BEST:"Vota por tu The Best",
         ASK_FRIENDS:"Pregunta a tus amigos",
+        ASK_FRIENDS_MESSAGE:"Necesito una opinión: 'The Best' {0} es...?",
         IS:"es",
         SHARE: "Compartir",
-        HELP_OTHERS: "Ahora, ayuda a otros a encontrar",
+        SHARE_MESSAGE: "Yo creo que 'The Best' {0} es {1}. ",
+        HELP_OTHERS: "Ahora, ayuda a otros a encontrar...",
         MAIN : {
           TITLE: 'The Best'
         }
