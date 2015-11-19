@@ -10,6 +10,18 @@
     var vm = this;
     vm.user_question = "";
     vm.best_answer = "";
+    vm.teaser="";
+
+    //Making sure String.format is properly implemented
+    String.prototype.format = function() {
+      var formatted = this;
+      for( var arg in arguments ) {
+        formatted = formatted.replace("{" + arg + "}", arguments[arg]);
+      }
+      return formatted;
+    };
+
+
 
     vm.askAgain = function() {
       $state.go('app.main');
@@ -30,8 +42,11 @@
     };
 
     vm.askYourFriends = function() {
-      var message = "I have a question for you, what is The Best " + vm.user_question + " ?";
-      var subject = "The Best";
+      var placeholderString= document.getElementById('askFriendsMessage').innerText.toString();
+      var message = placeholderString.format(vm.user_question);
+      console.log("TB_LOG: ASKING FRIENDS:"+ message);
+      //var message = "I have a question for you, what is The Best " + vm.user_question + " ?";
+      var subject = "'The Best' " + vm.user_question;
       var file = null;
       //var link = "thebest://app/askForAnswer?user_question=" + vm.user_question;
       var link = "android-app://com.thebest.app/thebest/app/askForAnswer?user_question=" + vm.user_question;
@@ -43,8 +58,10 @@
     };
 
     vm.share = function() {
-      var message = "The Best " + vm.user_question + " is " + vm.best_answer
-      var subject = "The Best";
+      var placeholderString= document.getElementById('shareMessage').innerText.toString();
+      var message = placeholderString.format(vm.user_question, vm.best_answer);
+      var subject = "'The Best' " + vm.user_question;
+      console.log("TB_LOG: SHARING:"+ message);
       var file = null;
       var link = "android-app://com.thebest.app/thebest/app/main";
       TheBestSvc.urlShortener(link)

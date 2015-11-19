@@ -16,12 +16,10 @@
       <div class="row">
         <div class="col">
           <button ion-track-tap="agree" ion-track-data="{event: showBestAnswer.agree}" translate="AGREE" ng-click="vm.agree()" class="button button-block button-balanced icon-left ion-thumbsup">
-            Agree!
           </button>
         </div>
         <div class="col">
           <button ion-track-tap="nah" ion-track-data="{event: showBestAnswer.nah}" translate="NAH"ng-click="vm.nah()" class="button button-block button-assertive icon-left ion-thumbsdown">
-            Nah...
           </button>
         </div>
       </div>
@@ -29,16 +27,16 @@
       <div class="row-stretch">
         <div class="col">
           <button ion-track-tap="ask_friends" ion-track-data="{event: showBestAnswer.ask_friends}" translate="ASK_FRIENDS" ng-click="vm.askYourFriends()" class="button button-block button-positive icon-left ion-ios-people">
-            Ask your friends
           </button>
+          <label id="askFriendsMessage" translate="ASK_FRIENDS_MESSAGE" style="display: none"></label>
         </div>
       </div>
 
       <div class="row-stretch">
         <div class="col">
           <button ion-track-tap="share" ion-track-data="{event: showBestAnswer.share}" translate="SHARE" ng-click="vm.share()" class="button button-block button-positive icon-left ion-share">
-            Share
           </button>
+          <label id="shareMessage" translate="SHARE_MESSAGE" style="display: none"></label>
         </div>
       </div>
 
